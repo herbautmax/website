@@ -18,7 +18,7 @@ export async function getServerSideProps() {
 
 export default function Home({ posts }: HomeProps) {
   return (
-    <div className="bg-gradient-to-b from-[#f4f6fb] via-[#e9f1f8] to-white min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50">
       <Navigation />
       <main className="flex-1 w-full max-w-5xl mx-auto px-4">
         <About />
@@ -28,7 +28,9 @@ export default function Home({ posts }: HomeProps) {
         <Contact />
       </main>
       <footer className="border-t mt-16 py-8 text-center text-gray-400 text-sm">
-        Maxime Herbaut © {new Date().getFullYear()}
+        <div className="max-w-5xl mx-auto px-4">
+          Maxime Herbaut © {new Date().getFullYear()}
+        </div>
       </footer>
     </div>
   );
