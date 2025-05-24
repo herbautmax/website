@@ -1,20 +1,40 @@
+// Contact.tsx (extrait)
+
+import { Mail, Linkedin } from "lucide-react";
+
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 text-center">
-      <h2 className="text-3xl font-bold mb-8 text-gray-900">Contact</h2>
-      <div className="max-w-lg mx-auto bg-white rounded-xl shadow p-6 border border-gray-100">
-        <p className="mb-4">Envie d’échanger sur un projet ? Discutons !</p>
-        <ul className="space-y-1 text-base">
-          <li>
-            <span className="font-semibold">Email</span> : <a href="mailto:maxime@herbaut.com" className="text-[#10b981] hover:underline">maxime@herbaut.com</a>
-          </li>
-          <li>
-            <span className="font-semibold">LinkedIn</span> : <a href="https://www.linkedin.com/in/maximeherbaut/" target="_blank" className="text-[#10b981] hover:underline">maximeherbaut</a>
-          </li>
-          <li>
-            <a href="https://calendly.com/..." className="text-[#10b981] hover:underline">Prends rendez-vous sur Calendly</a>
-          </li>
-        </ul>
+    <section
+      id="contact"
+      className="py-20 w-full bg-transparent flex flex-col items-center"
+    >
+      <div className="max-w-md w-full bg-[#23272a] rounded-2xl shadow-xl p-10 border border-white/10 mx-auto">
+        <h2 className="text-3xl font-extrabold mb-6 text-center text-white tracking-tight">
+          Contact
+        </h2>
+        <p className="mb-6 text-gray-300 text-center">
+          Envie d’échanger sur un projet ? Discutons !
+        </p>
+        <div className="space-y-4 mb-8">
+          <div className="flex items-center gap-2 bg-[#181b1f] rounded-lg px-4 py-3">
+            <Mail className="w-5 h-5 text-[#10b981]" />
+            <span className="text-[#10b981] font-semibold">
+              maxime@herbaut.com
+            </span>
+          </div>
+          <div className="flex items-center gap-2 bg-[#181b1f] rounded-lg px-4 py-3">
+            <Linkedin className="w-5 h-5 text-[#10b981]" />
+            <span className="text-[#10b981] font-semibold">
+              maximeherbaut
+            </span>
+          </div>
+        </div>
+        <a
+          href="https://calendly.com/..."
+          className="block text-center bg-[#10b981] hover:bg-[#11936c] text-white font-bold rounded-lg py-3 transition"
+        >
+          Prendre rendez-vous sur Calendly
+        </a>
       </div>
     </section>
   );

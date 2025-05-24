@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ajoute ici tes styles custom si besoin */
+
 body {
-  font-family: 'Inter', sans-serif;
-  background: #f9fafb;
+  @apply font-sans bg-[#181b1f] text-gray-100;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:target {
+  scroll-margin-top: 100px; /* à ajuster selon la hauteur de ton header */
 }
