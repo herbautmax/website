@@ -1,5 +1,3 @@
-// Contact.tsx (extrait)
-
 import { Mail, Linkedin } from "lucide-react";
 
 export default function Contact() {
@@ -18,20 +16,30 @@ export default function Contact() {
         <div className="space-y-4 mb-8">
           <div className="flex items-center gap-2 bg-[#181b1f] rounded-lg px-4 py-3">
             <Mail className="w-5 h-5 text-[#10b981]" />
-            <span className="text-[#10b981] font-semibold">
-              maxime@herbaut.com
-            </span>
+            <a
+              href="mailto:maxime@herbaut.me"
+              className="text-[#10b981] font-semibold hover:underline"
+            >
+              maxime@herbaut.me
+            </a>
           </div>
           <div className="flex items-center gap-2 bg-[#181b1f] rounded-lg px-4 py-3">
             <Linkedin className="w-5 h-5 text-[#10b981]" />
-            <span className="text-[#10b981] font-semibold">
+            <a
+              href="https://www.linkedin.com/in/maximeherbaut"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#10b981] font-semibold hover:underline"
+            >
               maximeherbaut
-            </span>
+            </a>
           </div>
         </div>
         <a
-          href="https://calendly.com/..."
+          href="https://calendly.com/maximeherbaut/30min"
           className="block text-center bg-[#10b981] hover:bg-[#11936c] text-white font-bold rounded-lg py-3 transition"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Prendre rendez-vous sur Calendly
         </a>

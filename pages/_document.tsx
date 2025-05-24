@@ -7,6 +7,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Manrope:wght@400;700&family=Sora:wght@400;700&display=swap" rel="stylesheet" />
         <meta name="theme-color" content="#181b1f" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className="bg-[#181b1f] text-gray-100 font-sans">
         <Main />
