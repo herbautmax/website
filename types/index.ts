@@ -6,5 +6,4 @@ export type Post = {
   excerpt: string;
   tags: string[];
   cover?: string;
-  content?: string;
 };

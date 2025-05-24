@@ -14,3 +14,64 @@ html {
 :target {
   scroll-margin-top: 100px; /* à ajuster selon la hauteur de ton header */
 }
+
+.notion-dark {
+  --notion-bg-color: #23272a !important;
+  --notion-text-color: #f4f4f4 !important;
+  --notion-header-background: transparent !important;
+  --notion-table-header-bg: #181b1f !important;
+}
+
+/* === Notion Custom Styling === */
+
+.notion-quote {
+ position: relative;
+  background: #202426;
+  color: #eafaf5;
+  border-left: 3px solid #10b981;
+  border-radius: 1.1rem;
+  padding: 1.2rem 1.5rem 1.2rem 2.1rem;
+  margin: 2rem 0;
+  font-size: 1.05rem;
+  font-style: normal;
+  line-height: 1.7;
+  box-shadow: 0 2px 8px 0 rgba(16,185,129,0.04);
+}
+
+.notion-quote ul,
+.notion-quote ol {
+  margin: 0.6em 0 0 1.4em;
+  padding-left: 0;
+}
+
+.notion-quote li {
+  font-style: italic;
+  margin-bottom: 0.25em;
+}
+
+.notion-quote p {
+  margin: 0;
+}
+
+.notion-h-title {
+  color: #10b981; 
+  font-weight: 800;
+  font-size: 2rem;        /* ~text-2xl */
+  margin-top: 2.5rem;     /* Espace suffisant avant */
+  margin-bottom: 1rem;    /* Espace après */
+  letter-spacing: -0.01em;
+}
+
+.notion-text {
+  font-size: 1.13rem;      /* ~18px (text-lg) */
+  line-height: 1.75;       /* Large, pour la lecture */
+  color: #f3f4f6;          /* Un blanc-gris doux */
+  letter-spacing: 0;
+  margin-bottom: 1.3em;
+  font-family: 'Inter', 'Manrope', 'Sora', system-ui, sans-serif;
+  max-width: 65ch;
+}
+
+
+
+

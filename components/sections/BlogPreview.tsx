@@ -8,27 +8,25 @@ type BlogPreviewProps = {
 export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
   return (
     <section id="blog" className="py-20 w-full bg-[#181b1f]">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl font-black mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1]">
           Derniers articles
         </h2>
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
           {posts.length > 0 ? posts.slice(0, 3).map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} passHref>
-              <div className="cursor-pointer bg-[#23272a] rounded-2xl shadow-lg p-6 border border-white/10 hover:scale-105 hover:shadow-2xl hover:border-[#10b981] transition group flex flex-col h-full">
+              <div className="cursor-pointer bg-[#23272a] rounded-2xl shadow-lg p-6 border border-white/10 hover:scale-[1.03] hover:shadow-2xl hover:border-[#10b981] focus-within:ring-2 ring-[#10b981] transition group flex flex-col h-full outline-none">
                 {post.cover && (
                   <img
                     src={post.cover}
                     alt={post.title}
-                    className="rounded-xl mb-4 w-full h-32 object-cover bg-[#191b1f]"
+                    className="rounded-xl mb-4 w-full h-36 object-cover bg-[#191b1f]"
                   />
                 )}
-                <h3 className="font-bold text-lg mb-2 text-white group-hover:text-[#10b981]">
+                <h3 className="font-bold text-xl mb-2 text-white group-hover:text-[#10b981] group-focus:text-[#10b981] transition-colors">
                   {post.title}
                 </h3>
-                <div className="text-xs text-gray-500 mb-2">
-                  {post.date}
-                </div>
+                <div className="text-xs text-gray-500 mb-2">{post.date}</div>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {post.tags?.map((tag) => (
                     <span
@@ -49,7 +47,10 @@ export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
           )}
         </div>
         <div className="flex justify-center">
-          <Link href="/blog" className="px-6 py-3 bg-[#10b981] hover:bg-[#0e9b73] rounded-xl text-white font-bold shadow transition-all text-base">
+          <Link
+            href="/blog"
+            className="px-7 py-3 bg-gradient-to-r from-[#10b981] to-[#6366f1] hover:from-[#0e9b73] hover:to-[#4f46e5] rounded-xl text-white font-extrabold shadow transition-all text-base focus:outline-none focus:ring-2 ring-[#10b981]"
+          >
             Tous les articles →
           </Link>
         </div>

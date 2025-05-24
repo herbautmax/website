@@ -8,9 +8,12 @@ import Contact from '../components/sections/Contact'
 import Footer from '../components/sections/Footer'
 import { getBlogPosts } from '../lib/notion'
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const posts = await getBlogPosts()
-  return { props: { posts } }
+  return {
+    props: { posts },
+    revalidate: 86400,
+  }
 }
 
 export default function Home({ posts }) {
@@ -25,7 +28,6 @@ export default function Home({ posts }) {
         <BlogPreview posts={posts} />
         <Contact />
       </main>
-      <Footer />
     </div>
   )
 }
