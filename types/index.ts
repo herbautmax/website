@@ -5,5 +5,5 @@ export type Post = {
   date: string;
   excerpt: string;
   tags: string[];
-  cover?: string;
+  cover: string | null; 
 };

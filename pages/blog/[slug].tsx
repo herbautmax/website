@@ -1,3 +1,4 @@
+// pages/blog/[slug].tsx
 import { useState, useEffect } from "react";
 import { NotionRenderer } from "react-notion-x";
 import { NotionAPI } from "notion-client";
@@ -6,6 +7,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { getBlogPosts, getPostBySlug } from "../../lib/notion";
 import { Post } from "../../types";
+import { GetStaticPropsContext } from 'next';
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -15,8 +17,17 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
-  const post = await getPostBySlug(params.slug);
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const params = context.params;
+
+  // Vérification que slug est une string et non un array
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
+
+  if (!slug) {
+    return { notFound: true };
+  }
+
+  const post = await getPostBySlug(slug);
   if (!post) return { notFound: true };
 
   const notionId = post.id.replace(/-/g, "");
@@ -31,14 +42,15 @@ export async function getStaticProps({ params }) {
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
-function BlogHead({ post }) {
+function BlogHead({ post }: { post: Post }) {
   const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
+  const displayTitle = post.title || "Untitled";
 
   return (
     <Head>
-     <title>{Array.isArray(post.title) ? post.title.join(" ") : post.title}</title>
+      <title>{displayTitle}</title>
       <meta name="description" content={post.excerpt || ""} />
-      <meta property="og:title" content={post.title} />
+      <meta property="og:title" content={displayTitle} />
       <meta property="og:description" content={post.excerpt} />
       <meta property="og:type" content="article" />
       <meta property="og:url" content={canonicalUrl} />
@@ -46,7 +58,7 @@ function BlogHead({ post }) {
       <meta property="og:site_name" content="Maxime Herbaut" />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={post.title} />
+      <meta name="twitter:title" content={displayTitle} />
       <meta name="twitter:description" content={post.excerpt} />
       {post.cover && <meta name="twitter:image" content={post.cover} />}
 
@@ -55,10 +67,14 @@ function BlogHead({ post }) {
   );
 }
 
-export default function BlogPost({ post, recordMap }) {
+interface BlogPostProps {
+  post: Post;
+  recordMap: any;
+}
+
+export default function BlogPost({ post, recordMap }: BlogPostProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Afficher le bouton quand on scrolle à plus de 300px
   useEffect(() => {
     function handleScroll() {
       setShowScrollTop(window.pageYOffset > 300);
@@ -67,7 +83,6 @@ export default function BlogPost({ post, recordMap }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fonction pour scroller en douceur vers le haut
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -102,7 +117,6 @@ export default function BlogPost({ post, recordMap }) {
         </div>
       </div>
 
-      {/* Bouton Retour en haut */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
@@ -110,7 +124,6 @@ export default function BlogPost({ post, recordMap }) {
           className="fixed bottom-8 right-8 bg-[#10b981] hover:bg-[#0e9b73] text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#10b981]"
           title="Retour en haut"
         >
-          {/* Icône flèche haut (lucide-react) */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

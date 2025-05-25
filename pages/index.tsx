@@ -7,16 +7,31 @@ import BlogPreview from '../components/sections/BlogPreview'
 import Contact from '../components/sections/Contact'
 import Footer from '../components/sections/Footer'
 import { getBlogPosts } from '../lib/notion'
+import { Post } from '../types'
+import { GetStaticProps } from 'next'
 
-export async function getStaticProps() {
+interface HomeProps {
+  posts: Post[]
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const posts = await getBlogPosts()
+
+  // Filtrer les posts sans cover si nécessaire
+  const filteredPosts = posts.map(post => ({
+    ...post,
+    cover: post.cover || null // S'assurer que cover est toujours null si undefined
+  }))
+
   return {
-    props: { posts },
+    props: {
+      posts: filteredPosts
+    },
     revalidate: 86400,
   }
 }
 
-export default function Home({ posts }) {
+export default function Home({ posts }: HomeProps) {
   return (
     <div className="bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] min-h-screen text-gray-100 font-sans transition-colors duration-300">
       <Navigation />
@@ -28,6 +43,7 @@ export default function Home({ posts }) {
         <BlogPreview posts={posts} />
         <Contact />
       </main>
+      <Footer />
     </div>
   )
 }
