@@ -36,3 +36,4 @@ coverage/
 # Optional: .idea (WebStorm/PhpStorm) and Mac system files
 .idea/
 *.swp
+.vercel

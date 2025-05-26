@@ -43,7 +43,6 @@ export default function Home({ posts }: HomeProps) {
         <BlogPreview posts={posts} />
         <Contact />
       </main>
-      <Footer />
     </div>
   )
 }
