@@ -39,5 +39,6 @@ coverage/
 .vercel
 
 public/sitemap-*.xml
+public/sitemap.xml
 public/robots.txt
 
