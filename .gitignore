@@ -37,3 +37,7 @@ coverage/
 .idea/
 *.swp
 .vercel
+
+public/sitemap-*.xml
+public/robots.txt
+
