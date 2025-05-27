@@ -17,10 +17,9 @@ interface HomeProps {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const posts = await getBlogPosts()
 
-  // Filtrer les posts sans cover si nécessaire
   const filteredPosts = posts.map(post => ({
     ...post,
-    cover: post.cover || null // S'assurer que cover est toujours null si undefined
+    cover: post.cover || null 
   }))
 
   return {

@@ -1,13 +1,14 @@
-// pages/blog/[slug].tsx
 import { useState, useEffect } from "react";
 import { NotionRenderer } from "react-notion-x";
-import { NotionAPI } from "notion-client";
 import "react-notion-x/src/styles.css";
-import Head from "next/head";
 import Link from "next/link";
 import { getBlogPosts, getPostBySlug } from "../../lib/notion";
 import { Post } from "../../types";
 import { GetStaticPropsContext } from 'next';
+import { formatDateFR } from "../../lib/formatDate";
+import TagLabel from "../../components/TagLabel";
+import BlogMiniHeader from "@/components/BlogMiniHeader";
+import BlogHead from "@/components/BlogHead";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -19,52 +20,20 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   const params = context.params;
-
-  // Vérification que slug est une string et non un array
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
-
-  if (!slug) {
-    return { notFound: true };
-  }
+  if (!slug) return { notFound: true };
 
   const post = await getPostBySlug(slug);
   if (!post) return { notFound: true };
 
   const notionId = post.id.replace(/-/g, "");
-  const notion = new NotionAPI();
+  const notion = new (await import("notion-client")).NotionAPI();
   const recordMap = await notion.getPage(notionId);
 
   return {
     props: { post, recordMap },
     revalidate: 86400,
   };
-}
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-
-function BlogHead({ post }: { post: Post }) {
-  const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
-  const displayTitle = post.title || "Untitled";
-
-  return (
-    <Head>
-      <title>{displayTitle}</title>
-      <meta name="description" content={post.excerpt || ""} />
-      <meta property="og:title" content={displayTitle} />
-      <meta property="og:description" content={post.excerpt} />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content={canonicalUrl} />
-      {post.cover && <meta property="og:image" content={post.cover} />}
-      <meta property="og:site_name" content="Maxime Herbaut" />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={displayTitle} />
-      <meta name="twitter:description" content={post.excerpt} />
-      {post.cover && <meta name="twitter:image" content={post.cover} />}
-
-      <link rel="canonical" href={canonicalUrl} />
-    </Head>
-  );
 }
 
 interface BlogPostProps {
@@ -90,26 +59,15 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
   return (
     <div className="min-h-screen bg-[#181b1f] text-gray-100 font-sans relative">
       <BlogHead post={post} />
-      <div className="max-w-3xl mx-auto py-10 px-4">
-        <Link
-          href="/blog"
-          className="inline-block mb-8 text-[#10b981] font-semibold hover:underline"
-          aria-label="Retour à la liste complète des articles"
-        >
-          ← Tous les articles
-        </Link>
+      <BlogMiniHeader variant="articles" />
+      <div className="max-w-3xl mx-auto py-10 px-4 pt-20">
         <h1 className="text-4xl sm:text-5xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1] drop-shadow-xl tracking-tight">
           {post.title}
         </h1>
-        <p className="text-sm text-gray-400 mb-2">{post.date}</p>
+        <p className="text-sm text-gray-400 mb-2">{formatDateFR(post.date)}</p>
         <div className="flex flex-wrap gap-2 mb-8">
           {post.tags?.map(tag => (
-            <span
-              key={tag}
-              className="bg-[#10b981]/20 text-[#10b981] rounded-lg px-3 py-1 text-xs font-semibold"
-            >
-              {tag}
-            </span>
+            <TagLabel key={tag} tag={tag} />
           ))}
         </div>
         <div className="notion-content">
