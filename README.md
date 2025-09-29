@@ -1,4 +1,4 @@
-# Maxime Herbaut – Site perso (Next.js + Tailwind + Notion)
+# Maxime Herbaut – Site perso / blog (Next.js + Tailwind + Notion)
 
 ## Setup
 
