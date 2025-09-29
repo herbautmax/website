@@ -28,16 +28,17 @@ const experiences = [
     date: "mai 2022 — juin 2023",
   },
   {
-    company: "Sergic",
-    role: "Product Manager Data",
-    date: "juin 2023 — aujourd’hui",
-  },
-  {
     company: "Weasyn",
     role: "Associé / CPO",
-    date: "sept 2023 — aujourd’hui",
+    date: "sept 2023 — décembre 2024",
   },
+  {
+    company: "Sergic",
+    role: "Product Manager (Data et Syndic)",
+    date: "Juin 2023 — aujourd'hui",
+  }
 ];
+
 
 export default function Experiences() {
   const scrollRef = useRef<HTMLDivElement>(null);
