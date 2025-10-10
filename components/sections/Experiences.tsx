@@ -1,49 +1,11 @@
 import { ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
-
-const experiences = [
-  {
-    company: "Villa Finder",
-    role: "Développeur web (stage)",
-    date: "juin 2014 — avr 2015",
-  },
-  {
-    company: "Freelance",
-    role: "Développeur web",
-    date: "juin 2015 — avr 2016",
-  },
-  {
-    company: "Tymate",
-    role: "Chef de projets",
-    date: "avr 2016 — déc 2018",
-  },
-  {
-    company: "Tymate",
-    role: "Directeur de projets",
-    date: "jan 2019 — avr 2022",
-  },
-  {
-    company: "Artifakt",
-    role: "Product Manager",
-    date: "mai 2022 — juin 2023",
-  },
-  {
-    company: "Weasyn",
-    role: "Associé / CPO",
-    date: "sept 2023 — décembre 2024",
-  },
-  {
-    company: "Sergic",
-    role: "Product Manager (Data et Syndic)",
-    date: "Juin 2023 — aujourd'hui",
-  }
-];
-
+import Tag from '../ui/Tag';
+import { experiencesData } from '../../data/experiences';
+import { formatDescription } from '../../lib/experience';
 
 export default function Experiences() {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  // Avancer d'une carte vers la droite
   const scrollRight = (idx: number) => {
     if (!scrollRef.current) return;
     const cards = scrollRef.current.querySelectorAll('.exp-card');
@@ -53,35 +15,38 @@ export default function Experiences() {
 
   return (
     <section id="experiences" className="py-24">
-      <h2 className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
-        Expériences
-      </h2>
-      <div
-        className="relative max-w-[100vw] px-4"
-        style={{ overflow: 'hidden' }}
-      >
+      <h2 className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">Expériences</h2>
+      <div className="relative max-w-[100vw] px-4" style={{ overflow: 'hidden' }}>
         <div
           ref={scrollRef}
           className="flex items-stretch gap-4 md:gap-8 pl-8 pr-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
-          style={{
-            WebkitOverflowScrolling: 'touch',
-            scrollBehavior: 'smooth',
-          }}
+          style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
           tabIndex={0}
         >
-          {experiences.map((exp, idx) => (
+          {experiencesData.map((exp, idx) => (
             <div key={exp.company + idx} className="flex items-center">
               <div
-                className="exp-card min-w-[280px] md:min-w-[340px] max-w-xs bg-[#23272a] rounded-2xl shadow-xl p-6 border border-white/10 flex-shrink-0 flex flex-col justify-between h-full snap-start"
+                className={`exp-card relative pt-6 min-w-[280px] md:min-w-[340px] max-w-xs bg-[#23272a] rounded-2xl shadow-xl p-6 border border-white/10 flex-shrink-0 flex flex-col h-full snap-start`}
               >
-                <div>
-                  <div className="text-2xl font-extrabold mb-1 text-white">{exp.company}</div>
-                  <div className="text-base text-gray-400">{exp.role}</div>
+                {/* 🟢 Badge date dans le coin */}
+                <div className="absolute top-0 right-0 bg-[#10b981]/20 text-[#10b981] text-xs font-semibold px-3 py-1 rounded-bl-2xl rounded-tr-2xl border border-[#10b981]/30">
+                  {exp.date}
                 </div>
-                <div className="text-[#10b981] text-base font-semibold mt-4">{exp.date}</div>
+
+                <div className="space-y-4">
+                  {/* (on enlève l’ancien <Tag> placé en haut du contenu) */}
+                  <div>
+                    <div className="text-2xl font-extrabold mb-1 text-white">{exp.company}</div>
+                    <div className="text-[12px] tracking-[0.12em] uppercase text-gray-400">{exp.role}</div>
+                  </div>
+                  <p
+                    className="text-sm text-gray-300 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: formatDescription(exp.description) }}
+                  />
+                </div>
               </div>
-              {/* Flèche entre chaque card (jamais à la fin) */}
-              {idx < experiences.length - 1 && (
+
+              {idx < experiencesData.length - 1 && (
                 <button
                   type="button"
                   className="ml-2 p-2 rounded-full hover:bg-[#10b981]/15 focus-visible:ring-2 focus:ring-[#10b981] transition"
@@ -96,7 +61,7 @@ export default function Experiences() {
           ))}
         </div>
       </div>
-      {/* Style pour cacher la barre de scroll */}
+
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

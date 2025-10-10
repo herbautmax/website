@@ -88,4 +88,21 @@ notion-quote,
 
 
 
+@page { size: A4; margin: 0; }
 
+@media print {
+  html, body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* Évite les coupures moches */
+  section, article, header, aside, .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  /* Adoucir les ombres/fonds si besoin */
+  .shadow, .shadow-lg, .shadow-xl, .shadow-2xl { box-shadow: none !important; }
+
+  /* Masquer des éléments non souhaités en PDF */
+  .print\\:hidden { display: none !important; }
+}
