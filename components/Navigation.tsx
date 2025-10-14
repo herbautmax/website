@@ -27,6 +27,7 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const lastScrollY = useRef(0);
+  const menuId = 'primary-navigation-menu';
 
   useEffect(() => {
     let ticking = false;
@@ -55,6 +56,28 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [open]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
+
+  const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    setOpen(false);
+    scrollToSection(id);
+  };
+
   // Affichage dynamique du header
   return (
     <header
@@ -63,8 +86,11 @@ export default function Navigation() {
       `}
       style={{ willChange: 'transform' }}
     >
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 mt-4 bg-[#23272a]/90 rounded-xl shadow-none border border-transparent">
-        <a href="#hero" className="flex items-center gap-3 group select-none">
+      <nav
+        className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 mt-4 bg-[#23272a]/90 rounded-xl shadow-none border border-transparent"
+        aria-label="Navigation principale"
+      >
+        <a href="#hero" className="flex items-center gap-3 group select-none focus-visible:outline-none">
           <div className="w-10 h-10 relative">
             <Image
               src="/logo.png"
@@ -81,22 +107,27 @@ export default function Navigation() {
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex gap-6">
+        <ul className="hidden md:flex gap-6" role="list">
           {NAV.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="text-gray-300 hover:text-[#10b981] text-base font-medium px-2 py-1 rounded-lg transition"
-            >
-              {item.label}
-            </button>
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={(event) => handleNavClick(event, item.id)}
+                className="text-gray-200 hover:text-[#10b981] text-base font-medium px-2 py-1 rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
+              >
+                {item.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Mobile nav toggle */}
         <button
-          className="md:hidden p-2 rounded-md hover:bg-[#10b981]/10 focus-visible:ring-2 ring-[#10b981]"
+          type="button"
+          className="md:hidden p-2 rounded-md hover:bg-[#10b981]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
           aria-label="Menu"
+          aria-expanded={open}
+          aria-controls={menuId}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
@@ -104,19 +135,23 @@ export default function Navigation() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="absolute top-full left-0 w-full bg-[#23272a] shadow-lg rounded-b-xl border-t border-[#23272e] flex flex-col items-center py-4 md:hidden z-50">
-            {NAV.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  setOpen(false);
-                  scrollToSection(item.id);
-                }}
-                className="text-gray-200 hover:text-[#10b981] text-lg font-medium px-4 py-2 rounded-lg transition mb-1"
-              >
-                {item.label}
-              </button>
-            ))}
+          <div
+            id={menuId}
+            className="absolute top-full left-0 w-full bg-[#23272a] shadow-lg rounded-b-xl border-t border-[#23272e] md:hidden z-50"
+          >
+            <ul className="flex flex-col items-center py-4" role="list">
+              {NAV.map((item) => (
+                <li key={item.id} className="w-full text-center">
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(event) => handleNavClick(event, item.id)}
+                    className="block text-gray-200 hover:text-[#10b981] text-lg font-medium px-4 py-2 rounded-lg transition mb-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </nav>

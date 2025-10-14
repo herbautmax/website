@@ -14,19 +14,24 @@ export default function Experiences() {
   };
 
   return (
-    <section id="experiences" className="py-24">
-      <h2 className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">Expériences</h2>
+    <section id="experiences" className="py-24 scroll-mt-24" aria-labelledby="experiences-title">
+      <h2 id="experiences-title" className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
+        Expériences
+      </h2>
       <div className="relative max-w-[100vw] px-4" style={{ overflow: 'hidden' }}>
         <div
           ref={scrollRef}
           className="flex items-stretch gap-4 md:gap-8 pl-8 pr-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
           style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
           tabIndex={0}
+          role="list"
+          aria-label="Parcours professionnel"
         >
           {experiencesData.map((exp, idx) => (
-            <div key={exp.company + idx} className="flex items-center">
-              <div
+            <div key={exp.company + idx} className="flex items-center" role="listitem">
+              <article
                 className={`exp-card relative pt-6 min-w-[280px] md:min-w-[340px] max-w-xs bg-[#23272a] rounded-2xl shadow-xl p-6 border border-white/10 flex-shrink-0 flex flex-col h-full snap-start`}
+                aria-labelledby={`experience-${idx}`}
               >
                 {/* 🟢 Badge date dans le coin */}
                 <div className="absolute top-0 right-0 bg-[#10b981]/20 text-[#10b981] text-xs font-semibold px-3 py-1 rounded-bl-2xl rounded-tr-2xl border border-[#10b981]/30">
@@ -35,26 +40,25 @@ export default function Experiences() {
 
                 <div className="space-y-4">
                   {/* (on enlève l’ancien <Tag> placé en haut du contenu) */}
-                  <div>
-                    <div className="text-2xl font-extrabold mb-1 text-white">{exp.company}</div>
-                    <div className="text-[12px] tracking-[0.12em] uppercase text-gray-400">{exp.role}</div>
-                  </div>
+                  <header id={`experience-${idx}`} className="space-y-1">
+                    <p className="text-2xl font-extrabold mb-1 text-white">{exp.company}</p>
+                    <p className="text-[12px] tracking-[0.12em] uppercase text-gray-300">{exp.role}</p>
+                  </header>
                   <p
-                    className="text-sm text-gray-300 leading-relaxed"
+                    className="text-sm text-gray-200 leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: formatDescription(exp.description) }}
                   />
                 </div>
-              </div>
+              </article>
 
               {idx < experiencesData.length - 1 && (
                 <button
                   type="button"
-                  className="ml-2 p-2 rounded-full hover:bg-[#10b981]/15 focus-visible:ring-2 focus:ring-[#10b981] transition"
+                  className="ml-2 p-2 rounded-full hover:bg-[#10b981]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a] transition"
                   aria-label="Avancer"
                   onClick={() => scrollRight(idx)}
-                  tabIndex={0}
                 >
-                  <ChevronRight className="w-7 h-7 text-[#10b981]" />
+                  <ChevronRight className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
                 </button>
               )}
             </div>

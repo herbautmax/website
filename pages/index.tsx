@@ -34,7 +34,7 @@ export default function Home({ posts }: HomeProps) {
   return (
     <div className="bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] min-h-screen text-gray-100 font-sans transition-colors duration-300">
       <Navigation />
-      <main className="flex flex-col items-center w-full">
+      <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
         <Hero />
         <About />
         <Services />

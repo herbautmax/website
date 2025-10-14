@@ -11,6 +11,30 @@ html {
   scroll-behavior: smooth;
 }
 
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: #10b981;
+  color: #0f172a;
+  font-weight: 600;
+  transform: translateY(-150%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+}
+
+:focus-visible {
+  outline: 3px solid #10b981;
+  outline-offset: 3px;
+}
+
 :target {
   scroll-margin-top: 100px; /* à ajuster selon la hauteur de ton header */
 }
