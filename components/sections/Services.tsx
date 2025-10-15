@@ -29,7 +29,7 @@ export default function Services() {
       <h2 id="services-title" className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
         Services
       </h2>
-      <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4" role="list">
+      <ul className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4" role="list">
         {services.map((service) => {
           const slug = service.title
             .toLowerCase()
@@ -38,20 +38,21 @@ export default function Services() {
             .replace(/[^a-z0-9]+/g, '-');
 
           return (
-          <article
-            key={service.title}
-            className="bg-[#23272a] rounded-2xl shadow-xl p-8 border border-white/10 hover:scale-[1.02] hover:shadow-2xl hover:border-[#10b981] transition group flex flex-col items-center text-center focus-within:outline-none"
-            aria-labelledby={`service-${slug}`}
-          >
-            {service.icon}
-            <h3 id={`service-${slug}`} className="font-bold text-[#10b981] text-lg mb-2">
-              {service.title}
-            </h3>
-            <p className="text-gray-200">{service.description}</p>
-          </article>
-        );
+            <li key={service.title} className="flex">
+              <article
+                className="bg-[#23272a] rounded-2xl shadow-xl p-8 border border-white/10 hover:scale-[1.02] hover:shadow-2xl hover:border-[#10b981] transition group flex flex-col items-center text-center focus-within:outline-none"
+                aria-labelledby={`service-${slug}`}
+              >
+                {service.icon}
+                <h3 id={`service-${slug}`} className="font-bold text-[#10b981] text-lg mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-gray-200">{service.description}</p>
+              </article>
+            </li>
+          );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

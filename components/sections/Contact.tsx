@@ -31,9 +31,9 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#10b981] font-semibold hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#181b1f] rounded"
-              aria-label="Profil LinkedIn de Maxime Herbaut (nouvel onglet)"
             >
               maximeherbaut
+              <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
             </a>
           </div>
         </address>
@@ -42,9 +42,9 @@ export default function Contact() {
           className="block text-center bg-[#10b981] hover:bg-[#11936c] text-white font-bold rounded-lg py-3 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-[#23272a]"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Prendre rendez-vous sur Calendly (nouvel onglet)"
         >
           Prendre rendez-vous sur Calendly
+          <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
         </a>
       </div>
     </section>

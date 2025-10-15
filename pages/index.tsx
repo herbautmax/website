@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Navigation from '../components/Navigation'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
@@ -5,7 +6,6 @@ import Services from '../components/sections/Services'
 import Experiences from '../components/sections/Experiences'
 import BlogPreview from '../components/sections/BlogPreview'
 import Contact from '../components/sections/Contact'
-import Footer from '../components/sections/Footer'
 import { getBlogPosts } from '../lib/notion'
 import { Post } from '../types'
 import { GetStaticProps } from 'next'
@@ -32,16 +32,25 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 
 export default function Home({ posts }: HomeProps) {
   return (
-    <div className="bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] min-h-screen text-gray-100 font-sans transition-colors duration-300">
-      <Navigation />
-      <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
-        <Hero />
-        <About />
-        <Services />
-        <Experiences />
-        <BlogPreview posts={posts} />
-        <Contact />
-      </main>
-    </div>
+    <>
+      <Head>
+        <title>Maxime Herbaut — Product Manager & Digital Builder</title>
+        <meta
+          name="description"
+          content="Découvrez le profil de Maxime Herbaut, Product Manager à Lille : services, expériences et articles autour du produit et de l’innovation."
+        />
+      </Head>
+      <div className="bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] min-h-screen text-gray-100 font-sans transition-colors duration-300">
+        <Navigation />
+        <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
+          <Hero />
+          <About />
+          <Services />
+          <Experiences />
+          <BlogPreview posts={posts} />
+          <Contact />
+        </main>
+      </div>
+    </>
   )
 }
