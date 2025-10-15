@@ -66,7 +66,7 @@ export default function CVPage() {
       </Head>
 
       <div className="min-h-screen bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] text-gray-100 font-sans">
-        <main className="max-w-5xl mx-auto px-6 py-16 space-y-12">
+        <main id="main-content" className="max-w-5xl mx-auto px-6 py-16 space-y-12" tabIndex={-1}>
          
          
           {/* Header */}
@@ -111,10 +111,10 @@ export default function CVPage() {
                     <Mail className="h-5 w-5 text-[#10b981]" aria-hidden="true" />
                     <a
                       href="mailto:maxime@herbaut.me"
-                      className="transition hover:text-[#10b981] hover:underline focus:outline-none focus:ring-2 focus:ring-[#10b981]/40 rounded"
-                      aria-label="Envoyer un e-mail à Maxime"
+                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
                     >
                       maxime@herbaut.me
+                      <span className="sr-only"> (ouvre votre client de messagerie)</span>
                     </a>
                   </div>
 
@@ -122,10 +122,10 @@ export default function CVPage() {
                     <Phone className="h-5 w-5 text-[#10b981]" aria-hidden="true" />
                     <a
                       href="tel:+33660160713"
-                      className="transition hover:text-[#10b981] hover:underline focus:outline-none focus:ring-2 focus:ring-[#10b981]/40 rounded"
-                      aria-label="Appeler Maxime"
+                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
                     >
                       +33 6 60 16 07 13
+                      <span className="sr-only"> (composer ce numéro)</span>
                     </a>
                   </div>
 
@@ -135,10 +135,10 @@ export default function CVPage() {
                       href="https://www.linkedin.com/in/maximeherbaut"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition hover:text-[#10b981] hover:underline focus:outline-none focus:ring-2 focus:ring-[#10b981]/40 rounded"
-                      aria-label="Profil LinkedIn de Maxime"
+                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
                     >
                       linkedin.com/in/maximeherbaut
+                      <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
                     </a>
                   </div>
                 </div>

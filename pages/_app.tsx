@@ -15,9 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_ID}
         />
       </Head>
-      <main className="flex-grow">
+      <a href="#main-content" className="skip-link">Aller au contenu principal</a>
+      <div className="flex-grow">
         <Component {...pageProps} />
-      </main>
+      </div>
       <Footer />
       <SpeedInsights />
     </div>

@@ -60,11 +60,11 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
     <div className="min-h-screen bg-[#181b1f] text-gray-100 font-sans relative">
       <BlogHead post={post} />
       <BlogMiniHeader variant="articles" />
-      <div className="max-w-3xl mx-auto py-10 px-4 pt-20">
+      <main id="main-content" className="max-w-3xl mx-auto py-10 px-4 pt-20" tabIndex={-1}>
         <h1 className="text-4xl sm:text-5xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1] drop-shadow-xl tracking-tight">
           {post.title}
         </h1>
-        <p className="text-sm text-gray-400 mb-2">{formatDateFR(post.date)}</p>
+        <p className="text-sm text-gray-300 mb-2">{formatDateFR(post.date)}</p>
         <div className="flex flex-wrap gap-2 mb-8">
           {post.tags?.map(tag => (
             <TagLabel key={tag} tag={tag} />
@@ -73,13 +73,13 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
         <div className="notion-content">
           <NotionRenderer recordMap={recordMap} darkMode />
         </div>
-      </div>
+      </main>
 
       {showScrollTop && (
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut de la page"
-          className="fixed bottom-8 right-8 bg-[#10b981] hover:bg-[#0e9b73] text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#10b981]"
+          className="fixed bottom-8 right-8 bg-[#10b981] hover:bg-[#0e9b73] text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10b981]"
           title="Retour en haut"
         >
           <svg
@@ -89,6 +89,7 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
+            aria-hidden="true"
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
           </svg>

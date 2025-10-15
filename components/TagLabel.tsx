@@ -35,7 +35,7 @@ type TagLabelProps = {
 
 export default function TagLabel({ tag }: TagLabelProps) {
   return (
-    <span className="inline-flex items-center bg-[#10b981]/20 text-[#10b981] rounded-lg px-2 py-0.5 text-xs font-semibold capitalize">
+    <span className="inline-flex items-center bg-[#134e4a] text-[#f0fdf4] rounded-lg px-2.5 py-1 text-xs font-semibold capitalize">
       {TAG_ICONS[tag] ?? null}
       {tag}
     </span>
