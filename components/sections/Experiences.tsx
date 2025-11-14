@@ -1,6 +1,5 @@
 import { ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
-import Tag from '../ui/Tag';
 import { experiencesData } from '../../data/experiences';
 import { formatDescription } from '../../lib/experience';
 
@@ -21,7 +20,7 @@ export default function Experiences() {
       <div className="relative max-w-[100vw] px-4" style={{ overflow: 'hidden' }}>
         <div
           ref={scrollRef}
-          className="flex items-stretch gap-4 md:gap-8 pl-8 pr-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+          className="flex items-stretch gap-4 md:gap-8 pl-4 pr-4 sm:pl-8 sm:pr-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
           style={{ WebkitOverflowScrolling: 'touch', scrollBehavior: 'smooth' }}
           tabIndex={0}
           role="list"
@@ -30,7 +29,7 @@ export default function Experiences() {
           {experiencesData.map((exp, idx) => (
             <div key={exp.company + idx} className="flex items-center" role="listitem">
               <article
-                className={`exp-card relative pt-6 min-w-[280px] md:min-w-[340px] max-w-xs bg-[#23272a] rounded-2xl shadow-xl p-6 border border-white/10 flex-shrink-0 flex flex-col h-full snap-start`}
+                className={`exp-card relative pt-6 min-w-[280px] md:min-w-[340px] max-w-sm bg-[#23272a] rounded-2xl shadow-xl p-8 md:p-10 border border-white/10 flex-shrink-0 flex flex-col h-full snap-start transition-transform duration-300 hover:scale-[1.02] hover:border-[#10b981]`}
                 aria-labelledby={`experience-${idx}`}
               >
                 {/* 🟢 Badge date dans le coin */}
@@ -54,11 +53,11 @@ export default function Experiences() {
               {idx < experiencesData.length - 1 && (
                 <button
                   type="button"
-                  className="ml-2 p-2 rounded-full hover:bg-[#10b981]/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a] transition"
+                  className="ml-2 flex h-12 w-12 items-center justify-center rounded-full border border-[#10b981]/40 bg-[#10b981]/15 text-[#10b981] shadow-lg shadow-black/30 backdrop-blur-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#181b1f]"
                   aria-label="Avancer"
                   onClick={() => scrollRight(idx)}
                 >
-                  <ChevronRight className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
+                  <ChevronRight className="w-6 h-6" aria-hidden="true" />
                 </button>
               )}
             </div>
