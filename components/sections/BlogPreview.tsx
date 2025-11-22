@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Post } from "../../types";
 import { formatDateFR } from "../../lib/formatDate";
 import TagLabel from "../TagLabel";
+import { cardBaseClasses, sectionTitleGradientClasses } from "../sectionStyles";
 
 type BlogPreviewProps = {
   posts: Post[];
@@ -15,7 +16,7 @@ export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
       <div className="max-w-5xl mx-auto">
         <h2
           id="blog-title"
-          className="text-3xl sm:text-4xl font-black mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1]"
+          className={`${sectionTitleGradientClasses} mb-12`}
         >
           Derniers articles
         </h2>
@@ -24,12 +25,12 @@ export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
             latestPosts.map((post) => (
               <li key={post.slug} className="h-full">
                 <article
-                  className="bg-[#23272a] rounded-2xl shadow-lg border border-white/10 transition hover:scale-[1.02] hover:shadow-2xl hover:border-[#10b981] focus-within:outline-none h-full flex flex-col"
+                  className={`${cardBaseClasses} h-full flex flex-col`}
                   aria-labelledby={`post-${post.slug}`}
                 >
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="flex flex-col flex-1 p-6 gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
+                    className="flex flex-col flex-1 p-6 gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1115]"
                     aria-labelledby={`post-${post.slug}`}
                   >
                     {post.cover && (

@@ -1,4 +1,5 @@
 import { Compass, Sparkle, Hammer, Users } from 'lucide-react';
+import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
 
 const services = [
   {
@@ -26,7 +27,7 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="py-20 w-full bg-[#181b1f] scroll-mt-24" aria-labelledby="services-title">
-      <h2 id="services-title" className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
+      <h2 id="services-title" className={`${sectionTitleGradientClasses} mb-10`}>
         Services
       </h2>
       <ul
@@ -43,7 +44,7 @@ export default function Services() {
           return (
             <li key={service.title} className="flex justify-center w-full">
               <article
-                className="bg-[#23272a] rounded-2xl shadow-xl p-8 md:p-10 border border-white/10 hover:scale-[1.02] hover:shadow-2xl hover:border-[#10b981] transition group flex flex-col items-center text-center focus-within:outline-none w-full max-w-sm"
+                className={`${cardBaseClasses} w-full max-w-sm p-8 md:p-10 flex flex-col items-center text-center`}
                 aria-labelledby={`service-${slug}`}
               >
                 {service.icon}

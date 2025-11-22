@@ -1,12 +1,13 @@
 import { experiencesData } from '../../data/experiences';
 import { formatDescription } from '../../lib/experience';
+import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
 
 export default function Experiences() {
   return (
     <section id="experiences" className="py-24 scroll-mt-24" aria-labelledby="experiences-title">
       <h2
         id="experiences-title"
-        className="mb-12 text-center text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
+        className={`${sectionTitleGradientClasses} mb-12`}
       >
         Expériences
       </h2>
@@ -19,7 +20,7 @@ export default function Experiences() {
             {experiencesData.map((exp, idx) => (
               <article
                 key={`${exp.company}-${idx}`}
-                className="relative rounded-3xl border border-white/5 bg-[#1d2125] p-6 pl-12 shadow-[0_15px_40px_-30px_rgba(16,185,129,0.8)] transition hover:border-[#10b981]/40 hover:shadow-[0_25px_50px_-30px_rgba(16,185,129,1)] sm:p-8 sm:pl-20"
+                className={`${cardBaseClasses} relative p-6 pl-12 sm:p-8 sm:pl-20`}
                 aria-labelledby={`experience-${idx}`}
               >
                 <span
