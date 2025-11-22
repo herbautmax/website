@@ -82,7 +82,7 @@ export default function CVPage() {
                   <span>Curriculum vitæ</span>
                   <span className="mx-2 h-3 w-px bg-white/20" aria-hidden="true" />
                   <span className="rounded-full bg-[#10b981]/15 px-2.5 py-1 text-[#10b981] ring-1 ring-inset ring-[#10b981]/30">
-                    8+ ans d’expérience
+                    10 ans d’expérience
                   </span>
                 </div>
 
@@ -95,7 +95,7 @@ export default function CVPage() {
                 </p>
 
                 <p className="max-w-2xl text-gray-300 leading-relaxed">
-                  Avec plus de 8 ans d’expérience, mon approche reste la même : aller vite, bien, et ajuster avec l’usage.
+                  Avec 10 ans d’expérience, mon approche reste la même : aller vite, bien, et ajuster avec l’usage.
                   <br className="hidden sm:block" />
                   La valeur se construit dans l’itération, pas dans la théorie.
                 </p>

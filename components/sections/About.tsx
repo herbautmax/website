@@ -19,10 +19,9 @@ export default function About() {
     <section id="about" className="py-24 px-4 w-full bg-transparent scroll-mt-24" aria-labelledby="about-title">
       <div className="max-w-5xl mx-auto text-center mb-12">
         <h2 id="about-title" className={sectionTitleGradientClasses}>
-          À propos & passions
+          À propos
         </h2>
         <p className="mt-3 text-base text-gray-300">
-          Quelques repères pour mieux me connaître en dehors d’un CV traditionnel.
         </p>
       </div>
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
@@ -39,11 +38,11 @@ export default function About() {
             </li>
             <li className="flex items-center gap-3">
               <Briefcase className="text-[#10b981] w-6 h-6" aria-hidden="true" />
-              <span>8+ ans agence & start-up</span>
+              <span>10 ans en agence & start-up & freelance</span>
             </li>
             <li className="flex items-center gap-3">
               <Compass className="text-[#6366f1] w-6 h-6" aria-hidden="true" />
-              <span>Discovery, delivery, design sprint</span>
+              <span>Product discovery, delivery & strategy</span>
             </li>
             <li className="flex items-center gap-3">
               <Leaf className="text-[#10b981] w-6 h-6" aria-hidden="true" />
@@ -65,7 +64,7 @@ export default function About() {
             <li>
               <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
                 <Soup className="w-6 h-6" aria-hidden="true" />
-                Cuisine & bons produits
+                Cuisine & gastronomie
               </span>
             </li>
             <li>
