@@ -5,24 +5,25 @@ const services = [
   {
     icon: <Compass className="w-10 h-10 text-indigo-400 mb-4" aria-hidden="true" />,
     title: "Concevoir",
-    description: "Ateliers, design sprint, cadrage MVP/V1."
+    description: "Vision et stratégie produit : ateliers, Design Sprint, définition du MVP/V1."
   },
   {
     icon: <Sparkle className="w-10 h-10 text-yellow-400 mb-4" aria-hidden="true" />,
     title: "Créer",
-    description: "Prototypage, MVP no-code, automatisation, IA."
+    description: "Prototypage rapide : MVP no-code, automatisations, IA générative et POC."
   },
   {
     icon: <Hammer className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />,
     title: "Développer",
-    description: "Discovery, delivery, tests utilisateurs."
+    description: "Discovery & Delivery : roadmap, tests utilisateurs, itération."
   },
   {
     icon: <Users className="w-10 h-10 text-green-400 mb-4" aria-hidden="true" />,
     title: "Fédérer",
-    description: "Montée en puissance des équipes produit."
+    description: "Structuration des équipes produit : rituels, priorisation, KPIs, culture data-driven."
   },
 ];
+
 
 export default function Services() {
   return (
