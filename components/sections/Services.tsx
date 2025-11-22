@@ -1,4 +1,5 @@
 import { Compass, Sparkle, Hammer, Users } from 'lucide-react';
+import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
 
 const services = [
   {
@@ -26,10 +27,13 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="py-20 w-full bg-[#181b1f] scroll-mt-24" aria-labelledby="services-title">
-      <h2 id="services-title" className="text-3xl font-extrabold mb-10 text-center text-white tracking-tight">
+      <h2 id="services-title" className={`${sectionTitleGradientClasses} mb-10`}>
         Services
       </h2>
-      <ul className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4" role="list">
+      <ul
+        className="grid gap-8 sm:gap-10 md:grid-cols-2 xl:grid-cols-4 max-w-5xl w-full mx-auto px-6 md:px-8 justify-items-center"
+        role="list"
+      >
         {services.map((service) => {
           const slug = service.title
             .toLowerCase()
@@ -38,9 +42,9 @@ export default function Services() {
             .replace(/[^a-z0-9]+/g, '-');
 
           return (
-            <li key={service.title} className="flex">
+            <li key={service.title} className="flex justify-center w-full">
               <article
-                className="bg-[#23272a] rounded-2xl shadow-xl p-8 border border-white/10 hover:scale-[1.02] hover:shadow-2xl hover:border-[#10b981] transition group flex flex-col items-center text-center focus-within:outline-none"
+                className={`${cardBaseClasses} w-full max-w-sm p-8 md:p-10 flex flex-col items-center text-center`}
                 aria-labelledby={`service-${slug}`}
               >
                 {service.icon}

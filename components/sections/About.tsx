@@ -10,18 +10,28 @@ import {
   Theater,
   Compass
 } from 'lucide-react';
+import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
 
 
 
 export default function About() {
   return (
     <section id="about" className="py-24 px-4 w-full bg-transparent scroll-mt-24" aria-labelledby="about-title">
+      <div className="max-w-5xl mx-auto text-center mb-12">
+        <h2 id="about-title" className={sectionTitleGradientClasses}>
+          À propos & passions
+        </h2>
+        <p className="mt-3 text-base text-gray-300">
+          Quelques repères pour mieux me connaître en dehors d’un CV traditionnel.
+        </p>
+      </div>
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
         {/* À propos */}
-        <article className="bg-[#22272a] rounded-2xl shadow-xl p-10 border border-white/10 h-full flex flex-col" aria-labelledby="about-title">
-          <h2 id="about-title" className="text-3xl font-extrabold mb-6 text-[#10b981] flex items-center gap-3">
-            <Briefcase className="w-8 h-8" aria-hidden="true" /> À propos
-          </h2>
+        <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="about-details">
+          <h3 id="about-details" className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <Briefcase className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
+            À propos
+          </h3>
           <ul className="space-y-4 text-gray-100 text-lg">
             <li className="flex items-center gap-3">
               <MapPin className="text-[#6366f1] w-6 h-6" aria-hidden="true" />
@@ -46,10 +56,11 @@ export default function About() {
           </ul>
         </article>
         {/* Passions */}
-        <article className="bg-[#22272a] rounded-2xl shadow-xl p-10 border border-white/10 h-full flex flex-col" aria-labelledby="passions-title">
-          <h2 id="passions-title" className="text-3xl font-extrabold mb-6 text-[#10b981] flex items-center gap-3">
-            <Soup className="w-8 h-8" aria-hidden="true" /> Passions
-          </h2>
+        <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="passions-title">
+          <h3 id="passions-title" className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <Soup className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
+            Passions
+          </h3>
           <ul className="flex flex-wrap gap-3">
             <li>
               <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
