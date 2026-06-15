@@ -1,58 +1,69 @@
-import { Compass, Sparkle, Hammer, Users } from 'lucide-react';
-import { cardBaseClasses } from '../sectionStyles';
-import SectionHeading from '../ui/SectionHeading';
+import { Compass, PenLine, Code, Users } from 'lucide-react';
+import { cardBaseClasses, eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
 
 const services = [
   {
     icon: Compass,
     slug: 'concevoir',
     title: 'Concevoir',
-    description: 'Vision et stratégie produit : ateliers, Design Sprint, définition du MVP/V1.',
+    description: 'Discovery, interviews, cadrage du problème et des objectifs. On part sur la bonne idée.',
   },
   {
-    icon: Sparkle,
+    icon: PenLine,
     slug: 'creer',
     title: 'Créer',
-    description: 'Prototypage rapide : MVP no-code, automatisations, IA générative et POC.',
+    description: 'Prototypage, design des parcours, tests utilisateurs. On valide avant de coder.',
   },
   {
-    icon: Hammer,
+    icon: Code,
     slug: 'developper',
     title: 'Développer',
-    description: 'Discovery & Delivery : roadmap, tests utilisateurs, itération.',
+    description: 'Delivery, priorisation, no-code & IA. On livre ce qui compte, vite et proprement.',
   },
   {
     icon: Users,
     slug: 'federer',
     title: 'Fédérer',
-    description: 'Structuration des équipes produit : rituels, priorisation, KPIs, culture data-driven.',
+    description: 'Animation d’équipe, rituels, montée en compétence produit & IA des collaborateurs.',
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="w-full bg-ink py-20 scroll-mt-24" aria-labelledby="services-title">
-      <div className="mx-auto max-w-5xl px-6 md:px-8">
-        <SectionHeading eyebrow="Ce que je fais" title="Services" id="services-title" className="mb-12" />
+    <section
+      id="services"
+      className="w-full border-y border-white/[0.06] bg-ink py-24 scroll-mt-24"
+      aria-labelledby="services-title"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
+          <div className="flex flex-col gap-4">
+            <span className={eyebrowClasses}>Services</span>
+            <h2 id="services-title" className={sectionTitleClasses}>
+              Quatre façons de travailler ensemble
+            </h2>
+          </div>
+          <p className="max-w-sm text-base leading-relaxed text-muted">
+            De l’idée floue au produit en prod. Vous prenez le bloc dont vous avez besoin — ou toute la chaîne.
+          </p>
+        </div>
 
-        <ul className="grid gap-8 sm:gap-10 md:grid-cols-2 xl:grid-cols-4" role="list">
+        <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4" role="list">
           {services.map((service) => {
-            const slug = service.slug;
             const Icon = service.icon;
-
             return (
               <li key={service.title} className="w-full">
                 <article
-                  className={`${cardBaseClasses} h-full w-full p-8 md:p-10 flex flex-col text-left`}
-                  aria-labelledby={`service-${slug}`}
+                  className={`${cardBaseClasses} h-full w-full p-8 text-left`}
+                  aria-labelledby={`service-${service.slug}`}
                 >
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10">
                     <Icon className="h-6 w-6 text-brand" aria-hidden="true" />
                   </div>
-                  <h3 id={`service-${slug}`} className="mb-2 text-lg font-bold text-mist">
+                  <h3 id={`service-${service.slug}`} className="mb-2.5 text-xl font-bold tracking-tight text-mist">
                     {service.title}
                   </h3>
-                  <p className="text-muted">{service.description}</p>
+                  <p className="text-[0.95rem] leading-relaxed text-muted">{service.description}</p>
                 </article>
               </li>
             );

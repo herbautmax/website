@@ -1,40 +1,42 @@
 import Button from '../ui/Button';
-import { eyebrowClasses } from '../sectionStyles';
 
-const clients = ['Sergic', 'Roquette', 'Norauto', '+12 équipes'];
+const clients = [
+  { name: 'Sergic', className: 'tracking-tight' },
+  { name: 'ROQUETTE', className: 'tracking-wide' },
+  { name: 'Norauto', className: 'tracking-tightest' },
+  { name: '+12 équipes produit', className: 'italic font-semibold' },
+];
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="w-full bg-ink pt-32 pb-16 scroll-mt-24"
+      className="w-full border-b border-white/[0.06] bg-ink pt-28 scroll-mt-24"
       aria-labelledby="hero-title"
     >
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid items-center gap-12 md:grid-cols-[1.25fr_1fr]">
+      <div className="mx-auto max-w-6xl px-6 pb-16 pt-12">
+        <div className="grid items-center gap-14 md:grid-cols-[1.25fr_1fr]">
           {/* Texte */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-brand/35 px-4 py-1.5 text-sm text-brand">
+            <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-brand/35 px-4 py-1.5 text-sm font-medium text-brand">
               <span className="h-2 w-2 rounded-full bg-brand" aria-hidden="true" />
               Disponible pour missions · Lille &amp; remote
             </span>
 
-            <span className={`${eyebrowClasses} mb-3`}>Maxime Herbaut</span>
-
             <h1
               id="hero-title"
-              className="text-5xl font-bold tracking-tightest text-mist sm:text-6xl lg:text-7xl"
+              className="text-[2.75rem] font-extrabold leading-[0.95] tracking-tightest text-mist sm:text-6xl lg:text-7xl"
             >
-              Product Manager &amp;{' '}
-              <span className="text-brand">digital builder</span>
+              Product Manager<br />
+              &amp; <span className="text-brand">digital builder</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-fog">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
               J’aide les équipes à imaginer, concevoir et lancer des produits digitaux
-              utiles, robustes, et élégants.
+              utiles, robustes et élégants — de la discovery au delivery.
             </p>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
+            <div className="mt-9 flex flex-wrap justify-center gap-4 md:justify-start">
               <Button href="#contact">Me contacter</Button>
               <Button href="#experiences" variant="outline">
                 Voir mes missions
@@ -48,10 +50,10 @@ export default function Hero() {
               <img
                 src="/avatar-mh.png"
                 alt="Maxime Herbaut"
-                className="h-44 w-44 rounded-full border-4 border-brand bg-ink-800 shadow-card sm:h-52 sm:w-52"
+                className="h-56 w-56 rounded-full border-4 border-brand bg-ink-800 object-cover shadow-card sm:h-64 sm:w-64 lg:h-72 lg:w-72"
               />
               <span
-                className="absolute bottom-2 right-2 rounded-xl bg-brand px-2.5 py-1 text-xs font-bold text-brand-ink shadow"
+                className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-brand px-4 py-1.5 text-xs font-bold text-brand-ink shadow"
                 aria-hidden="true"
               >
                 Product
@@ -61,19 +63,14 @@ export default function Hero() {
         </div>
 
         {/* Preuve sociale */}
-        <div className="mt-16 border-t border-white/10 pt-8">
-          <p className="mb-4 font-label text-xs uppercase tracking-wide text-muted">
+        <div className="mt-16 border-t border-white/[0.08] pt-8">
+          <p className="mb-5 font-label text-xs font-semibold uppercase tracking-[0.18em] text-muted">
             Ils m’ont fait confiance
           </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2" role="list">
-            {clients.map((name, idx) => (
-              <li key={name} className="flex items-center gap-x-6">
-                <span className="text-2xl font-bold text-fog">{name}</span>
-                {idx < clients.length - 1 && (
-                  <span className="text-brand/40" aria-hidden="true">
-                    ·
-                  </span>
-                )}
+          <ul className="flex flex-wrap items-center gap-x-12 gap-y-3" role="list">
+            {clients.map((client) => (
+              <li key={client.name} className={`text-2xl font-bold text-fog ${client.className}`}>
+                {client.name}
               </li>
             ))}
           </ul>

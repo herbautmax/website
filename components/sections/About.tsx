@@ -1,25 +1,11 @@
-import {
-  MapPin,
-  Briefcase,
-  Leaf,
-  Bot,
-  Soup,
-  Volleyball,
-  Mountain,
-  Trees,
-  Theater,
-  Compass,
-} from 'lucide-react';
-import { cardBaseClasses } from '../sectionStyles';
-import SectionHeading from '../ui/SectionHeading';
+import { Soup, Volleyball, Mountain, Trees, Theater } from 'lucide-react';
+import { eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
 import Chip from '../ui/Chip';
 
-const facts = [
-  { icon: MapPin, label: 'Lille' },
-  { icon: Briefcase, label: '10 ans en agence & start-up & freelance' },
-  { icon: Compass, label: 'Product discovery, delivery & strategy' },
-  { icon: Leaf, label: 'Expérience utilisateur & impact' },
-  { icon: Bot, label: 'No-code, automatisation, IA' },
+const stats = [
+  { value: '10 ans', label: 'en product' },
+  { value: '15+', label: 'produits lancés' },
+  { value: '1 250', label: 'collaborateurs outillés' },
 ];
 
 const passions = [
@@ -32,43 +18,57 @@ const passions = [
 
 export default function About() {
   return (
-    <section id="about" className="w-full bg-transparent py-24 px-4 scroll-mt-24" aria-labelledby="about-title">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeading eyebrow="À propos" title="À propos" id="about-title" className="mb-12" />
+    <section id="about" className="w-full py-24 scroll-mt-24" aria-labelledby="about-title">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+          {/* Titre */}
+          <div className="flex flex-col gap-4">
+            <span className={eyebrowClasses}>À propos</span>
+            <h2 id="about-title" className={sectionTitleClasses}>
+              Le produit, de l’intuition au lancement.
+            </h2>
+          </div>
 
-        <div className="grid gap-8 md:grid-cols-2 items-stretch">
-          {/* À propos */}
-          <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="about-details">
-            <h3 id="about-details" className="mb-6 flex items-center gap-3 text-2xl font-bold text-mist">
-              <Briefcase className="h-7 w-7 text-brand" aria-hidden="true" />
-              À propos
-            </h3>
-            <ul className="space-y-4 text-lg text-fog">
-              {facts.map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3">
-                  <Icon className="h-6 w-6 shrink-0 text-brand" aria-hidden="true" />
-                  <span>{label}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
+          {/* Bio + stats */}
+          <div>
+            <p className="mb-6 text-lg leading-relaxed text-fog sm:text-xl">
+              Product Manager depuis 10 ans, j’ai piloté des produits B2B et B2C dans la proptech,
+              l’industrie et le retail. Mon truc : relier le besoin terrain, la faisabilité technique
+              et l’impact business — sans jamais sacrifier la finition.
+            </p>
+            <p className="mb-9 text-lg leading-relaxed text-muted sm:text-xl">
+              Aujourd’hui en freelance, j’embarque les équipes sur des cycles courts : cadrer juste,
+              prototyper vite, livrer ce qui compte. Et j’intègre l’IA là où elle fait gagner du temps réel.
+            </p>
 
-          {/* Passions */}
-          <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="passions-title">
-            <h3 id="passions-title" className="mb-6 flex items-center gap-3 text-2xl font-bold text-mist">
-              <Soup className="h-7 w-7 text-brand" aria-hidden="true" />
-              Passions
-            </h3>
-            <ul className="flex flex-wrap gap-3">
-              {passions.map(({ icon: Icon, label }) => (
-                <li key={label}>
-                  <Chip icon={<Icon className="h-5 w-5" />} className="text-base">
-                    {label}
-                  </Chip>
-                </li>
+            <dl className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <div key={stat.label} className="rounded-2xl border border-white/[0.07] bg-ink p-6">
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="block text-4xl font-extrabold tracking-tightest text-brand">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1 block text-sm text-muted">{stat.label}</span>
+                  </dd>
+                </div>
               ))}
-            </ul>
-          </article>
+            </dl>
+
+            {/* Passions */}
+            <div className="mt-10 border-t border-white/[0.08] pt-8">
+              <p className="mb-4 font-label text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                En dehors du produit
+              </p>
+              <ul className="flex flex-wrap gap-3">
+                {passions.map(({ icon: Icon, label }) => (
+                  <li key={label}>
+                    <Chip icon={<Icon className="h-5 w-5" />}>{label}</Chip>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

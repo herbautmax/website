@@ -6,7 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-ink font-sans text-fog">
+    <div className="flex min-h-screen flex-col bg-ink-950 font-sans text-fog">
       <Head>
         <script
           async

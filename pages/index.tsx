@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
 import Services from '../components/sections/Services'
+import Testimonials from '../components/sections/Testimonials'
 import Experiences from '../components/sections/Experiences'
 import BlogPreview from '../components/sections/BlogPreview'
 import Contact from '../components/sections/Contact'
@@ -58,12 +59,13 @@ export default function Home({ posts }: HomeProps) {
         />
         <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
       </Head>
-      <div className="min-h-screen bg-ink font-sans text-fog">
+      <div className="min-h-screen bg-ink-950 font-sans text-fog">
         <Navigation />
         <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
           <Hero />
           <About />
           <Services />
+          <Testimonials />
           <Experiences />
           <BlogPreview posts={posts} />
           <Contact />
