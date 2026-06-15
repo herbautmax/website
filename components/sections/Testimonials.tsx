@@ -1,10 +1,11 @@
 import { testimonials } from '../../data/testimonials';
+import { content } from '../../content/site';
 
 export default function Testimonials() {
   if (testimonials.length === 0) return null;
 
   return (
-    <section className="w-full py-24" aria-label="Témoignages">
+    <section className="w-full py-24" aria-label={content.home.testimonials.ariaLabel}>
       <div className="mx-auto max-w-6xl px-6">
         <ul className="grid gap-6 md:grid-cols-2" role="list">
           {testimonials.map((t) => (

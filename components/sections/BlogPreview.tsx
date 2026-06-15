@@ -3,6 +3,7 @@ import { Post } from "../../types";
 import { formatDateFR } from "../../lib/formatDate";
 import TagLabel from "../TagLabel";
 import { cardBaseClasses, eyebrowClasses, sectionTitleClasses } from "../sectionStyles";
+import { content } from "../../content/site";
 
 type BlogPreviewProps = {
   posts: Post[];
@@ -16,17 +17,17 @@ export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-11 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div className="flex flex-col gap-4">
-            <span className={eyebrowClasses}>Blog</span>
+            <span className={eyebrowClasses}>{content.home.blogPreview.eyebrow}</span>
             <h2 id="blog-title" className={sectionTitleClasses}>
-              Méthode produit &amp; IA
+              {content.home.blogPreview.title}
             </h2>
           </div>
           <Link
             href="/blog"
             className="rounded text-sm font-semibold text-brand transition hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
-            aria-label="Accéder à tous les articles du blog"
+            aria-label={content.home.blogPreview.allLinkAria}
           >
-            Tous les articles →
+            {content.home.blogPreview.allLink}
           </Link>
         </div>
 
@@ -72,7 +73,7 @@ export default function BlogPreview({ posts = [] }: BlogPreviewProps) {
             ))
           ) : (
             <li className="md:col-span-3">
-              <p className="text-center text-fog">Aucun article pour le moment.</p>
+              <p className="text-center text-fog">{content.home.blogPreview.empty}</p>
             </li>
           )}
         </ul>

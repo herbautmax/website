@@ -1,6 +1,7 @@
 import { experiencesData } from '../../data/experiences';
 import { sortExperiencesDesc, formatDescription } from '../../lib/experience';
 import { eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
+import { content } from '../../content/site';
 
 export default function Experiences() {
   const experiences = sortExperiencesDesc(experiencesData);
@@ -13,9 +14,9 @@ export default function Experiences() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 flex flex-col gap-4">
-          <span className={eyebrowClasses}>Expériences</span>
+          <span className={eyebrowClasses}>{content.home.experiences.eyebrow}</span>
           <h2 id="experiences-title" className={sectionTitleClasses}>
-            Un fil produit, plusieurs terrains
+            {content.home.experiences.title}
           </h2>
         </div>
 
