@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { NotionRenderer } from "react-notion-x";
 import "react-notion-x/src/styles.css";
+import { Code } from "react-notion-x/build/third-party/code";
+import { Collection } from "react-notion-x/build/third-party/collection";
 import Link from "next/link";
 import { getBlogPosts, getPostBySlug } from "../../lib/notion";
+import { normalizeRecordMap } from "../../lib/notionRecordMap";
 import { Post } from "../../types";
 import { GetStaticPropsContext } from 'next';
 import { formatDateFR } from "../../lib/formatDate";
@@ -28,7 +31,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   const notionId = post.id.replace(/-/g, "");
   const notion = new (await import("notion-client")).NotionAPI();
-  const recordMap = await notion.getPage(notionId);
+  const recordMap = normalizeRecordMap(await notion.getPage(notionId));
 
   return {
     props: { post, recordMap },
@@ -71,7 +74,11 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
           ))}
         </div>
         <div className="notion-content">
-          <NotionRenderer recordMap={recordMap} darkMode />
+          <NotionRenderer
+            recordMap={recordMap}
+            darkMode
+            components={{ Code, Collection }}
+          />
         </div>
       </main>
 
