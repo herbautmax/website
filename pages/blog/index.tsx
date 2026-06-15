@@ -5,6 +5,7 @@ import Head from "next/head";
 import { formatDateFR } from "../../lib/formatDate";
 import TagLabel from "../../components/TagLabel";
 import BlogMiniHeader from "@/components/BlogMiniHeader";
+import { content } from "../../content/site";
 
 type BlogPageProps = {
   posts: Post[];
@@ -19,18 +20,18 @@ export default function BlogPage({ posts }: BlogPageProps) {
   return (
     <div className="flex min-h-screen flex-col bg-ink font-sans text-fog">
       <Head>
-        <title>Tous les articles | Maxime Herbaut</title>
-        <meta name="description" content="Retrouvez tous les articles du blog de Maxime Herbaut, Product Manager à Lille." />
+        <title>{content.meta.blogList.title}</title>
+        <meta name="description" content={content.meta.blogList.description} />
       </Head>
       <BlogMiniHeader variant="home" />
       <main id="main-content" className="mx-auto flex max-w-3xl flex-grow flex-col gap-10 px-4 pt-20" tabIndex={-1}>
         <header className="flex flex-col gap-3">
-          <span className="font-label text-sm font-semibold uppercase tracking-[0.16em] text-brand">Le blog</span>
+          <span className="font-label text-sm font-semibold uppercase tracking-[0.16em] text-brand">{content.blog.eyebrow}</span>
           <h1 className="text-4xl font-bold tracking-tightest text-mist sm:text-5xl">
-            Tous les articles
+            {content.blog.title}
           </h1>
           <p className="max-w-2xl text-fog">
-            Retrouvez l’ensemble des publications pour approfondir les thématiques produit, design et innovation.
+            {content.blog.intro}
           </p>
         </header>
         <ul className="mb-20 flex-grow space-y-6" role="list">

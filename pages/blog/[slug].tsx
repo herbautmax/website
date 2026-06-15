@@ -12,6 +12,7 @@ import { formatDateFR } from "../../lib/formatDate";
 import TagLabel from "../../components/TagLabel";
 import BlogMiniHeader from "@/components/BlogMiniHeader";
 import BlogHead from "@/components/BlogHead";
+import { content } from "../../content/site";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -85,9 +86,9 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          aria-label="Retour en haut de la page"
+          aria-label={content.blog.scrollTopAria}
           className="fixed bottom-8 right-8 rounded-full bg-brand p-3 text-brand-ink shadow-lg transition hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-          title="Retour en haut"
+          title={content.blog.scrollTopTitle}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

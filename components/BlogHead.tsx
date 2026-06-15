@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { Post } from "../types";
+import { content } from "../content/site";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export default function BlogHead({ post }: { post: Post }) {
   const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
-  const displayTitle = post.title || "Untitled";
+  const displayTitle = post.title || content.meta.untitled;
 
   return (
     <Head>
@@ -16,7 +17,7 @@ export default function BlogHead({ post }: { post: Post }) {
       <meta property="og:type" content="article" />
       <meta property="og:url" content={canonicalUrl} />
       {post.cover && <meta property="og:image" content={post.cover} />}
-      <meta property="og:site_name" content="Maxime Herbaut" />
+      <meta property="og:site_name" content={content.brand} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={displayTitle} />
