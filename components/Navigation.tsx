@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
 import { buttonClasses } from './ui/Button';
 
 const NAV = [
@@ -86,22 +85,19 @@ export default function Navigation() {
       `}
       style={{ willChange: 'transform' }}
     >
+      <div className="border-b border-white/[0.06] bg-ink-950/80 backdrop-blur-xl">
       <nav
-        className="mx-auto mt-4 flex max-w-6xl items-center justify-between rounded-xl border border-white/[0.06] bg-ink-800/90 px-4 py-3 backdrop-blur sm:px-8"
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10"
         aria-label="Navigation principale"
       >
         <a href="#hero" className="group flex select-none items-center gap-3 focus-visible:outline-none">
-          <div className="relative h-10 w-10">
-            <Image
-              src="/logo.png"
-              alt="Logo Maxime Herbaut"
-              width={40}
-              height={40}
-              className="rounded-lg"
-              priority
-            />
-          </div>
-          <span className="text-lg font-semibold text-mist transition group-hover:text-brand">
+          <span
+            className="flex h-9 w-9 items-center justify-center rounded-[0.6rem] bg-brand text-base font-extrabold tracking-tightest text-brand-ink"
+            aria-hidden="true"
+          >
+            MH
+          </span>
+          <span className="text-[1.05rem] font-bold tracking-tight text-mist transition group-hover:text-brand">
             Maxime Herbaut
           </span>
         </a>
@@ -113,7 +109,7 @@ export default function Navigation() {
               <a
                 href={`#${item.id}`}
                 onClick={(event) => handleNavClick(event, item.id)}
-                className="rounded-lg px-2 py-1 text-base font-medium text-muted transition hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800"
+                className="rounded-lg px-2 py-1 text-base font-medium text-muted transition hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
               >
                 {item.label}
               </a>
@@ -123,7 +119,7 @@ export default function Navigation() {
             <a
               href="#contact"
               onClick={(event) => handleNavClick(event, 'contact')}
-              className={buttonClasses('primary', 'sm', 'focus-visible:ring-offset-ink-800')}
+              className={buttonClasses('primary', 'sm', 'focus-visible:ring-offset-ink-950')}
             >
               Contact
             </a>
@@ -133,7 +129,7 @@ export default function Navigation() {
         {/* Mobile nav toggle */}
         <button
           type="button"
-          className="rounded-md p-2 text-mist hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800 md:hidden"
+          className="rounded-md p-2 text-mist hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 md:hidden"
           aria-label="Menu"
           aria-expanded={open}
           aria-controls={menuId}
@@ -146,7 +142,7 @@ export default function Navigation() {
         {open && (
           <div
             id={menuId}
-            className="absolute top-full left-0 z-50 w-full rounded-b-xl border-t border-white/10 bg-ink-800 shadow-lg md:hidden"
+            className="absolute top-full left-0 z-50 w-full border-t border-white/10 bg-ink-950/95 shadow-lg backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col items-center py-4" role="list">
               {[...NAV, { label: 'Contact', id: 'contact' }].map((item) => (
@@ -164,6 +160,7 @@ export default function Navigation() {
           </div>
         )}
       </nav>
+      </div>
     </header>
   );
 }
