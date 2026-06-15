@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#0E1114;}
+  ::selection{background:#12B981;color:#04150E;}
+  a{text-decoration:none;color:inherit;}
+</style>
+</helmet>
+
+<div style="font-family:'Schibsted Grotesk',sans-serif;background:#0E1114;color:#F3F5F4;min-height:100vh;">
+
+  <!-- ============ NAV ============ -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(14,17,20,0.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:13px;">
+        <div style="width:36px;height:36px;border-radius:10px;background:#12B981;display:flex;align-items:center;justify-content:center;"><span style="font-size:17px;font-weight:800;letter-spacing:-0.05em;color:#04150E;">MH</span></div>
+        <span style="font-size:17px;font-weight:700;letter-spacing:-0.02em;">Maxime Herbaut</span>
+      </div>
+      <div style="display:flex;gap:34px;align-items:center;">
+        <a href="#apropos" style="font-size:15px;color:#9AA1AB;">À propos</a>
+        <a href="#services" style="font-size:15px;color:#9AA1AB;">Services</a>
+        <a href="#experiences" style="font-size:15px;color:#9AA1AB;">Expériences</a>
+        <a href="#blog" style="font-size:15px;color:#9AA1AB;">Blog</a>
+        <a href="#contact" style="font-size:15px;font-weight:600;color:#04150E;background:#12B981;padding:10px 20px;border-radius:10px;">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header style="background:#181B1F;border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:88px 40px 72px;">
+      <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:center;">
+        <div>
+          <span style="display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;color:#12B981;border:1px solid rgba(18,185,129,0.35);border-radius:999px;padding:7px 16px;margin-bottom:30px;"><span style="width:7px;height:7px;border-radius:50%;background:#12B981;"></span>Disponible pour missions · Lille &amp; remote</span>
+          <h1 style="margin:0 0 24px;font-size:78px;line-height:0.95;font-weight:800;letter-spacing:-0.04em;color:#F3F5F4;">Product Manager<br>&amp; <span style="color:#12B981;">digital builder</span></h1>
+          <p style="margin:0 0 38px;font-size:20px;line-height:1.6;color:#9AA1AB;max-width:50ch;">J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants — de la discovery au delivery.</p>
+          <div style="display:flex;gap:14px;align-items:center;">
+            <a href="#contact" style="font-size:16px;font-weight:600;color:#04150E;background:#12B981;padding:15px 28px;border-radius:12px;">Me contacter</a>
+            <a href="#experiences" style="font-size:16px;font-weight:500;color:#F3F5F4;border:1px solid rgba(255,255,255,0.18);padding:15px 28px;border-radius:12px;">Voir mes missions</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center;">
+          <div style="width:300px;height:300px;border-radius:50%;background:linear-gradient(160deg,#20242A,#0E1114);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:flex-end;justify-content:center;position:relative;">
+            <span style="position:absolute;top:38px;font-size:14px;color:#4B5159;">Photo</span>
+            <span style="margin-bottom:-14px;font-size:13px;font-weight:700;color:#04150E;background:#12B981;padding:7px 16px;border-radius:999px;">Product</span>
+          </div>
+        </div>
+      </div>
+      <!-- client logos -->
+      <div style="margin-top:64px;padding-top:30px;border-top:1px solid rgba(255,255,255,0.08);">
+        <span style="font-family:'Space Grotesk',monospace;font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#6B7280;display:block;margin-bottom:20px;">Ils m'ont fait confiance</span>
+        <div style="display:flex;gap:52px;align-items:center;flex-wrap:wrap;">
+          <span style="font-size:24px;font-weight:700;letter-spacing:-0.02em;color:#C7CCD2;">Sergic</span>
+          <span style="font-size:24px;font-weight:700;letter-spacing:0.02em;color:#C7CCD2;">ROQUETTE</span>
+          <span style="font-size:24px;font-weight:800;letter-spacing:-0.03em;color:#C7CCD2;">Norauto</span>
+          <span style="font-size:24px;font-weight:600;font-style:italic;color:#C7CCD2;">+12 équipes produit</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ À PROPOS ============ -->
+  <section id="apropos" style="max-width:1200px;margin:0 auto;padding:96px 40px;">
+    <div style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:64px;align-items:start;">
+      <div>
+        <span style="font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#12B981;">À propos</span>
+        <h2 style="margin:18px 0 0;font-size:46px;line-height:1.05;font-weight:700;letter-spacing:-0.03em;">Le produit, de l'intuition au lancement.</h2>
+      </div>
+      <div>
+        <p style="margin:0 0 22px;font-size:19px;line-height:1.65;color:#C7CCD2;">Product Manager depuis 8 ans, j'ai piloté des produits B2B et B2C dans la proptech, l'industrie et le retail. Mon truc&nbsp;: relier le besoin terrain, la faisabilité technique et l'impact business — sans jamais sacrifier la finition.</p>
+        <p style="margin:0 0 32px;font-size:19px;line-height:1.65;color:#9AA1AB;">Aujourd'hui en freelance, j'embarque les équipes sur des cycles courts&nbsp;: cadrer juste, prototyper vite, livrer ce qui compte. Et j'intègre l'IA là où elle fait gagner du temps réel.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          <div style="background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px;">
+            <div style="font-size:38px;font-weight:800;letter-spacing:-0.03em;color:#12B981;">8 ans</div>
+            <div style="font-size:14px;color:#9AA1AB;margin-top:4px;">en product</div>
+          </div>
+          <div style="background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px;">
+            <div style="font-size:38px;font-weight:800;letter-spacing:-0.03em;color:#12B981;">15+</div>
+            <div style="font-size:14px;color:#9AA1AB;margin-top:4px;">produits lancés</div>
+          </div>
+          <div style="background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px;">
+            <div style="font-size:38px;font-weight:800;letter-spacing:-0.03em;color:#12B981;">1 250</div>
+            <div style="font-size:14px;color:#9AA1AB;margin-top:4px;">collaborateurs outillés</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" style="background:#181B1F;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 40px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:20px;">
+        <div>
+          <span style="font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#12B981;">Services</span>
+          <h2 style="margin:18px 0 0;font-size:46px;line-height:1.05;font-weight:700;letter-spacing:-0.03em;">Quatre façons de travailler ensemble</h2>
+        </div>
+        <p style="font-size:16px;line-height:1.6;color:#9AA1AB;max-width:34ch;margin:0;">De l'idée floue au produit en prod. Vous prenez le bloc dont vous avez besoin — ou toute la chaîne.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+        <div style="background:#20242A;border:1px solid #2C313A;border-radius:18px;padding:30px;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(18,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-0.02em;">Concevoir</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA1AB;">Discovery, interviews, cadrage du problème et des objectifs. On part sur la bonne idée.</p>
+        </div>
+        <div style="background:#20242A;border:1px solid #2C313A;border-radius:18px;padding:30px;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(18,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-0.02em;">Créer</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA1AB;">Prototypage, design des parcours, tests utilisateurs. On valide avant de coder.</p>
+        </div>
+        <div style="background:#20242A;border:1px solid #2C313A;border-radius:18px;padding:30px;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(18,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-0.02em;">Développer</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA1AB;">Delivery, priorisation, no-code &amp; IA. On livre ce qui compte, vite et proprement.</p>
+        </div>
+        <div style="background:#20242A;border:1px solid #2C313A;border-radius:18px;padding:30px;">
+          <div style="width:48px;height:48px;border-radius:12px;background:rgba(18,185,129,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12B981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 style="margin:0 0 10px;font-size:21px;font-weight:700;letter-spacing:-0.02em;">Fédérer</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:#9AA1AB;">Animation d'équipe, rituels, montée en compétence produit &amp; IA des collaborateurs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TÉMOIGNAGE ============ -->
+  <section style="max-width:1200px;margin:0 auto;padding:96px 40px;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div style="background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;">
+        <p style="margin:0 0 30px;font-size:24px;line-height:1.45;font-weight:500;letter-spacing:-0.01em;color:#F3F5F4;">« Maxime a cadré en deux semaines un sujet sur lequel on tournait en rond depuis six mois. Clair, structuré, et il livre. »</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:46px;height:46px;border-radius:50%;background:#20242A;border:1px solid rgba(255,255,255,0.1);"></div>
+          <div>
+            <div style="font-size:15px;font-weight:600;">Directrice Produit</div>
+            <div style="font-size:13px;color:#12B981;">Scale-up proptech</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;">
+        <p style="margin:0 0 30px;font-size:24px;line-height:1.45;font-weight:500;letter-spacing:-0.01em;color:#F3F5F4;">« Le bon mix entre vision produit et exécution. Nos équipes ont gagné en autonomie, et l'IA est enfin entrée dans nos rituels. »</p>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:46px;height:46px;border-radius:50%;background:#20242A;border:1px solid rgba(255,255,255,0.1);"></div>
+          <div>
+            <div style="font-size:15px;font-weight:600;">Head of Digital</div>
+            <div style="font-size:13px;color:#12B981;">Groupe retail</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPÉRIENCES ============ -->
+  <section id="experiences" style="background:#181B1F;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 40px;">
+      <span style="font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#12B981;">Expériences</span>
+      <h2 style="margin:18px 0 48px;font-size:46px;line-height:1.05;font-weight:700;letter-spacing:-0.03em;">Un fil produit, plusieurs terrains</h2>
+      <div style="display:flex;flex-direction:column;">
+        <div style="display:grid;grid-template-columns:160px 1fr auto;gap:32px;align-items:baseline;padding:26px 0;border-top:1px solid rgba(255,255,255,0.08);">
+          <span style="font-family:'Space Grotesk',monospace;font-size:15px;color:#6B7280;">2023 — auj.</span>
+          <div>
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;">Product Manager freelance</div>
+            <div style="font-size:15px;color:#9AA1AB;">Discovery, delivery &amp; intégration IA pour startups et PME.</div>
+          </div>
+          <span style="font-size:15px;color:#C7CCD2;">Indépendant</span>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr auto;gap:32px;align-items:baseline;padding:26px 0;border-top:1px solid rgba(255,255,255,0.08);">
+          <span style="font-family:'Space Grotesk',monospace;font-size:15px;color:#6B7280;">2020 — 2023</span>
+          <div>
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;">Lead Product Manager</div>
+            <div style="font-size:15px;color:#9AA1AB;">Pilotage d'une suite d'outils internes — 1 250 collaborateurs outillés.</div>
+          </div>
+          <span style="font-size:15px;color:#C7CCD2;">Sergic</span>
+        </div>
+        <div style="display:grid;grid-template-columns:160px 1fr auto;gap:32px;align-items:baseline;padding:26px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="font-family:'Space Grotesk',monospace;font-size:15px;color:#6B7280;">2017 — 2020</span>
+          <div>
+            <div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;">Product Manager</div>
+            <div style="font-size:15px;color:#9AA1AB;">Produits digitaux B2C dans l'industrie et le retail.</div>
+          </div>
+          <span style="font-size:15px;color:#C7CCD2;">Roquette · Norauto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOG ============ -->
+  <section id="blog" style="max-width:1200px;margin:0 auto;padding:96px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span style="font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#12B981;">Blog</span>
+        <h2 style="margin:18px 0 0;font-size:46px;line-height:1.05;font-weight:700;letter-spacing:-0.03em;">Méthode produit &amp; IA</h2>
+      </div>
+      <a href="#" style="font-size:15px;font-weight:600;color:#12B981;">Tous les articles →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <a href="#" style="display:block;background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:18px;overflow:hidden;">
+        <div style="height:160px;background:linear-gradient(150deg,#20242A,#12211B);display:flex;align-items:flex-end;padding:18px;"><span style="font-size:12px;font-weight:600;color:#12B981;background:rgba(18,185,129,0.14);padding:5px 12px;border-radius:999px;">Méthode IA</span></div>
+        <div style="padding:24px;">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;margin-bottom:10px;">Intégrer l'IA dans ses rituels produit sans tout casser</div>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9AA1AB;">Où l'IA fait gagner du temps réel — et où elle vous ralentit.</p>
+        </div>
+      </a>
+      <a href="#" style="display:block;background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:18px;overflow:hidden;">
+        <div style="height:160px;background:linear-gradient(150deg,#20242A,#1A2030);display:flex;align-items:flex-end;padding:18px;"><span style="font-size:12px;font-weight:600;color:#12B981;background:rgba(18,185,129,0.14);padding:5px 12px;border-radius:999px;">Discovery</span></div>
+        <div style="padding:24px;">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;margin-bottom:10px;">5 erreurs classiques en product discovery</div>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9AA1AB;">Et comment les éviter avant d'écrire la moindre ligne de code.</p>
+        </div>
+      </a>
+      <a href="#" style="display:block;background:#181B1F;border:1px solid rgba(255,255,255,0.07);border-radius:18px;overflow:hidden;">
+        <div style="height:160px;background:linear-gradient(150deg,#20242A,#241E14);display:flex;align-items:flex-end;padding:18px;"><span style="font-size:12px;font-weight:600;color:#12B981;background:rgba(18,185,129,0.14);padding:5px 12px;border-radius:999px;">Delivery</span></div>
+        <div style="padding:24px;">
+          <div style="font-size:19px;font-weight:700;letter-spacing:-0.02em;line-height:1.25;margin-bottom:10px;">Prioriser quand tout est urgent</div>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:#9AA1AB;">Un cadre simple pour arbitrer sans y passer la semaine.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" style="max-width:1200px;margin:0 auto;padding:40px 40px 96px;">
+    <div style="background:#12B981;border-radius:26px;padding:72px 64px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-100px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(4,21,14,0.10);"></div>
+      <div style="position:relative;max-width:42ch;">
+        <span style="font-family:'Space Grotesk',monospace;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#04150E;">Contact</span>
+        <h2 style="margin:18px 0 18px;font-size:56px;line-height:1.0;font-weight:800;letter-spacing:-0.035em;color:#04150E;">On construit votre prochain produit ?</h2>
+        <p style="margin:0 0 36px;font-size:19px;line-height:1.6;color:#0A3A28;">Parlez-moi de votre sujet en deux lignes. Je reviens vers vous sous 24&nbsp;h avec une première lecture.</p>
+        <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+          <a href="mailto:hello@maximeherbaut.com" style="font-size:16px;font-weight:600;color:#12B981;background:#04150E;padding:16px 30px;border-radius:12px;">hello@maximeherbaut.com</a>
+          <a href="#" style="font-size:16px;font-weight:600;color:#04150E;border:1px solid rgba(4,21,14,0.3);padding:16px 30px;border-radius:12px;">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1200px;margin:0 auto;padding:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:32px;height:32px;border-radius:9px;background:#12B981;display:flex;align-items:center;justify-content:center;"><span style="font-size:15px;font-weight:800;letter-spacing:-0.05em;color:#04150E;">MH</span></div>
+        <span style="font-size:15px;font-weight:600;">Maxime Herbaut</span>
+      </div>
+      <span style="font-size:13px;color:#6B7280;">© 2026 Maxime Herbaut · Product Manager freelance · Lille</span>
+      <div style="display:flex;gap:22px;">
+        <a href="#" style="font-size:14px;color:#9AA1AB;">LinkedIn</a>
+        <a href="#" style="font-size:14px;color:#9AA1AB;">Email</a>
+        <a href="#blog" style="font-size:14px;color:#9AA1AB;">Blog</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>
