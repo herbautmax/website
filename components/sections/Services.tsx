@@ -1,32 +1,15 @@
 import { Compass, PenLine, Code, Users } from 'lucide-react';
 import { cardBaseClasses, eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
+import { content } from '../../content/site';
 
-const services = [
-  {
-    icon: Compass,
-    slug: 'concevoir',
-    title: 'Concevoir',
-    description: 'Discovery, interviews, cadrage du problème et des objectifs. On part sur la bonne idée.',
-  },
-  {
-    icon: PenLine,
-    slug: 'creer',
-    title: 'Créer',
-    description: 'Prototypage, design des parcours, tests utilisateurs. On valide avant de coder.',
-  },
-  {
-    icon: Code,
-    slug: 'developper',
-    title: 'Développer',
-    description: 'Delivery, priorisation, no-code & IA. On livre ce qui compte, vite et proprement.',
-  },
-  {
-    icon: Users,
-    slug: 'federer',
-    title: 'Fédérer',
-    description: 'Animation d’équipe, rituels, montée en compétence produit & IA des collaborateurs.',
-  },
-];
+const servicesContent = content.home.services;
+
+const serviceIcons = {
+  compass: Compass,
+  penLine: PenLine,
+  code: Code,
+  users: Users,
+} as const;
 
 export default function Services() {
   return (
@@ -38,19 +21,19 @@ export default function Services() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
           <div className="flex flex-col gap-4">
-            <span className={eyebrowClasses}>Services</span>
+            <span className={eyebrowClasses}>{servicesContent.eyebrow}</span>
             <h2 id="services-title" className={sectionTitleClasses}>
-              Quatre façons de travailler ensemble
+              {servicesContent.title}
             </h2>
           </div>
           <p className="max-w-sm text-base leading-relaxed text-muted">
-            De l’idée floue au produit en prod. Vous prenez le bloc dont vous avez besoin — ou toute la chaîne.
+            {servicesContent.intro}
           </p>
         </div>
 
         <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4" role="list">
-          {services.map((service) => {
-            const Icon = service.icon;
+          {servicesContent.items.map((service) => {
+            const Icon = serviceIcons[service.iconKey];
             return (
               <li key={service.title} className="w-full">
                 <article

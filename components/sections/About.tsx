@@ -1,20 +1,17 @@
 import { Soup, Volleyball, Mountain, Trees, Theater } from 'lucide-react';
 import { eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
 import Chip from '../ui/Chip';
+import { content } from '../../content/site';
 
-const stats = [
-  { value: '10 ans', label: 'en product' },
-  { value: '15+', label: 'produits lancés' },
-  { value: '1 250', label: 'collaborateurs outillés' },
-];
+const about = content.home.about;
 
-const passions = [
-  { icon: Soup, label: 'Cuisine & gastronomie' },
-  { icon: Volleyball, label: 'Volley, beach-volley' },
-  { icon: Mountain, label: 'Randonnée' },
-  { icon: Trees, label: 'Nature' },
-  { icon: Theater, label: 'Théâtre' },
-];
+const passionIcons = {
+  soup: Soup,
+  volleyball: Volleyball,
+  mountain: Mountain,
+  trees: Trees,
+  theater: Theater,
+} as const;
 
 export default function About() {
   return (
@@ -23,26 +20,23 @@ export default function About() {
         <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
           {/* Titre */}
           <div className="flex flex-col gap-4">
-            <span className={eyebrowClasses}>À propos</span>
+            <span className={eyebrowClasses}>{about.eyebrow}</span>
             <h2 id="about-title" className={sectionTitleClasses}>
-              Le produit, de l’intuition au lancement.
+              {about.title}
             </h2>
           </div>
 
           {/* Bio + stats */}
           <div>
             <p className="mb-6 text-lg leading-relaxed text-fog sm:text-xl">
-              Product Manager depuis 10 ans, j’ai piloté des produits B2B et B2C dans la proptech,
-              l’industrie et le retail. Mon truc : relier le besoin terrain, la faisabilité technique
-              et l’impact business — sans jamais sacrifier la finition.
+              {about.bio1}
             </p>
             <p className="mb-9 text-lg leading-relaxed text-muted sm:text-xl">
-              Aujourd’hui en freelance, j’embarque les équipes sur des cycles courts : cadrer juste,
-              prototyper vite, livrer ce qui compte. Et j’intègre l’IA là où elle fait gagner du temps réel.
+              {about.bio2}
             </p>
 
             <dl className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-              {stats.map((stat) => (
+              {about.stats.map((stat) => (
                 <div key={stat.label} className="rounded-2xl border border-white/[0.07] bg-ink p-6">
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>
@@ -58,14 +52,17 @@ export default function About() {
             {/* Passions */}
             <div className="mt-10 border-t border-white/[0.08] pt-8">
               <p className="mb-4 font-label text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-                En dehors du produit
+                {about.passionsLabel}
               </p>
               <ul className="flex flex-wrap gap-3">
-                {passions.map(({ icon: Icon, label }) => (
-                  <li key={label}>
-                    <Chip icon={<Icon className="h-5 w-5" />}>{label}</Chip>
-                  </li>
-                ))}
+                {about.passions.map(({ iconKey, label }) => {
+                  const Icon = passionIcons[iconKey];
+                  return (
+                    <li key={label}>
+                      <Chip icon={<Icon className="h-5 w-5" />}>{label}</Chip>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
