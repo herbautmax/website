@@ -1,3 +1,5 @@
+import { content } from '../../content/site';
+
 const linkClasses =
   'rounded text-sm text-muted transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950';
 
@@ -16,28 +18,28 @@ export default function Footer() {
             MH
           </span>
           <span className="text-sm font-semibold text-mist transition-colors group-hover:text-brand">
-            Maxime Herbaut
+            {content.brand}
           </span>
         </a>
 
         <span className="text-xs text-muted">
-          © {new Date().getFullYear()} Maxime Herbaut · Product Manager freelance · Lille
+          © {new Date().getFullYear()} {content.brand} · {content.footer.copyrightSuffix}
         </span>
 
-        <nav className="flex gap-6" aria-label="Liens de pied de page">
+        <nav className="flex gap-6" aria-label={content.footer.navAriaLabel}>
           <a
-            href="https://www.linkedin.com/in/maximeherbaut"
+            href={content.contactInfo.linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={linkClasses}
           >
-            LinkedIn
+            {content.footer.linkedin}
           </a>
-          <a href="mailto:maxime@herbaut.me" className={linkClasses}>
-            Email
+          <a href={content.contactInfo.emailHref} className={linkClasses}>
+            {content.footer.email}
           </a>
           <a href="/blog" className={linkClasses}>
-            Blog
+            {content.footer.blog}
           </a>
         </nav>
       </div>

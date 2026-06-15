@@ -1,5 +1,10 @@
+import { content } from '../../content/site';
+
 const ringOnBrand =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ink focus-visible:ring-offset-2 focus-visible:ring-offset-brand';
+
+const contact = content.home.contact;
+const info = content.contactInfo;
 
 export default function Contact() {
   return (
@@ -13,43 +18,42 @@ export default function Contact() {
 
         <div className="relative max-w-2xl">
           <span className="font-label text-sm font-semibold uppercase tracking-[0.16em] text-brand-ink">
-            Contact
+            {contact.eyebrow}
           </span>
           <h2
             id="contact-title"
             className="mt-4 text-4xl font-extrabold leading-[1.02] tracking-tightest text-brand-ink sm:text-5xl"
           >
-            On construit votre prochain produit ?
+            {contact.title}
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-brand-ink/80">
-            Parlez-moi de votre sujet en deux lignes. Je reviens vers vous sous 24&nbsp;h avec une
-            première lecture.
+            {contact.text}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3.5">
             <a
-              href="https://calendar.app.google/mp1wi1iaEw7J5A4w6"
+              href={info.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center justify-center rounded-xl bg-brand-ink px-7 py-3.5 text-base font-semibold text-brand transition-colors hover:bg-black ${ringOnBrand}`}
             >
-              Prendre rendez-vous
-              <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
+              {contact.ctaBook}
+              <span className="sr-only">{contact.newTabSr}</span>
             </a>
             <a
-              href="mailto:maxime@herbaut.me"
+              href={info.emailHref}
               className={`inline-flex items-center justify-center rounded-xl border border-brand-ink/30 px-7 py-3.5 text-base font-semibold text-brand-ink transition-colors hover:bg-brand-ink/10 ${ringOnBrand}`}
             >
-              maxime@herbaut.me
+              {contact.ctaEmail}
             </a>
             <a
-              href="https://www.linkedin.com/in/maximeherbaut"
+              href={info.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex items-center justify-center rounded-xl border border-brand-ink/30 px-7 py-3.5 text-base font-semibold text-brand-ink transition-colors hover:bg-brand-ink/10 ${ringOnBrand}`}
             >
-              LinkedIn
-              <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
+              {contact.ctaLinkedin}
+              <span className="sr-only">{contact.newTabSr}</span>
             </a>
           </div>
         </div>
