@@ -50,10 +50,10 @@ html {
 /* === Notion Custom Styling === */
 
 .notion-dark {
-  --notion-bg-color: #23272a !important;
-  --notion-text-color: #f4f4f4 !important;
+  --notion-bg-color: #20242A !important;
+  --notion-text-color: #F3F5F4 !important;
   --notion-header-background: transparent !important;
-  --notion-table-header-bg: #181b1f !important;
+  --notion-table-header-bg: #181B1F !important;
 }
 
 .notion-quote {

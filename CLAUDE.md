@@ -36,18 +36,23 @@ Copy `.env.local.example` → `.env.local`. Required:
 
 **Pages** (`pages/`): `index.tsx` composes the homepage from `components/sections/*` (Hero, About, Services, Experiences, BlogPreview, Contact). `cv.tsx` is a self-contained CV page (also the print source for the PDF, via `?print=1`). `_app.tsx` wraps everything with the global Footer, Umami script, and Vercel SpeedInsights.
 
-**Styling.** Tailwind utility classes inline. Shared style strings are centralized in `components/sectionStyles.ts` (`sectionTitleClasses`, `sectionTitleGradientClasses`, `cardBaseClasses`) — edit these to restyle all sections at once. Import alias `@/*` maps to the repo root (`tsconfig.json`).
+**Styling.** Tailwind utility classes inline, on top of a small design system (the "Émeraude" direction):
+- **Design tokens** live in `tailwind.config.js` `theme.extend`: colors `ink` (+950/900/800/700), `brand` (+`hover`/`ink`/`soft`), `mist`/`fog`/`muted`/`paper`; fonts `font-sans` (Schibsted Grotesk) / `font-label` (Space Grotesk, eyebrows); `tracking-tightest`, `shadow-card`/`card-hover`, `max-w-prose`. **Use these tokens, not raw hex.** The single accent is émeraude `#12B981` (`brand`) — no indigo, no rainbow gradients.
+- **Shared style strings** in `components/sectionStyles.ts`: `sectionTitleClasses`, `eyebrowClasses`, `cardBaseClasses`. `sectionTitleGradientClasses` is kept as an alias of `sectionTitleClasses` (no gradient) only so old imports don't break — prefer the non-gradient name in new code.
+- **Reusable UI primitives** in `components/ui/`: `Button` (variants `primary`/`outline`; `buttonClasses()` helper for applying button styles to a `next/link` `<Link>`), `Chip` (variants `soft`/`tint`, optional icon), `SectionHeading` (eyebrow + title). Reuse these across pages instead of re-inlining CTA/chip/heading markup. `components/ui/Tag.tsx` is a legacy tint chip (currently unused).
+
+Import alias `@/*` maps to the repo root (`tsconfig.json`).
 
 **CV → PDF.** `scripts/generate-cv-pdf.ts` launches Puppeteer against the running CV page (`/cv?print=1`) and writes `public/cv-maxime-herbaut.pdf`. Requires a live server. Run locally and commit the result (see CV PDF workflow above) — Vercel serves the committed file.
 
-## Active redesign (branch `redesign`)
+## Redesign "Émeraude" (branch `redesign`)
 
-`design_handoff_site_refonte/README.md` is the **design brief** for an in-progress restyling — read it before any visual change. Key rules:
-- It is a **restyling only**: do not change data-fetching, routing, or component structure — only styles and visual hierarchy.
-- Single accent color **émeraude `#12B981`**. Remove all indigo `#6366f1` and every `bg-gradient-to-* from-[#10b981]...` rainbow gradient (replace with solid colors).
-- New design tokens go in `tailwind.config.js` (`theme.extend` is currently empty — the brief specifies the full token set: `ink`, `brand`, `mist`/`fog`/`muted` colors, `Schibsted Grotesk`/`Space Grotesk` fonts).
-- All lucide icons unify to `text-brand`. Limit weights to 400/700.
-- `references/*.png` are the visual targets; `.dc.html` files are mockups, not production code to copy.
+The redesign described in `design_handoff_site_refonte/README.md` **has been applied** (see `docs/superpowers/specs/2026-06-15-refonte-emeraude-design.md`). The handoff + spec remain the reference for the design intent. When making further visual changes, keep them consistent with that direction:
+- **Restyling discipline**: don't change data-fetching, routing, or component structure for cosmetic work — style and visual hierarchy only.
+- Single accent **émeraude `#12B981`** (`brand` token). No indigo `#6366f1`, no rainbow gradients (`bg-gradient-to-* from-...via-...to-...`). All lucide icons use `text-brand`. Title weights 400/700 (800 reserved for hero/large numbers).
+- `references/*.png` are the visual targets; `.dc.html` files are mockups, not production code.
+- **Outstanding asset to supply**: `public/og-image.png` (1200×630) — OG/Twitter meta in `pages/index.tsx` already reference it via `NEXT_PUBLIC_SITE_URL`.
+- After any CV change, regenerate the PDF locally (font changed) — see CV PDF workflow above.
 
 ## Conventions
 
