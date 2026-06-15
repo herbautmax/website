@@ -5,7 +5,7 @@ const linkClasses =
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-white/[0.06]">
+    <footer className="w-full border-t border-white/[0.06] bg-ink-950">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 py-10 text-center sm:flex-row sm:text-left">
         <a
           href="/"

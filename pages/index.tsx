@@ -51,7 +51,7 @@ export default function Home({ posts }: HomeProps) {
         <meta name="twitter:description" content={content.meta.home.twitterDescription} />
         <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
       </Head>
-      <div className="min-h-screen bg-ink-950 font-sans text-fog">
+      <div className="min-h-screen bg-ink font-sans text-fog">
         <Navigation />
         <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
           <Hero />

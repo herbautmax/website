@@ -37,7 +37,7 @@ export default function About() {
 
             <dl className="grid grid-cols-1 gap-5 sm:grid-cols-3">
               {about.stats.map((stat) => (
-                <div key={stat.label} className="rounded-2xl border border-white/[0.07] bg-ink p-6">
+                <div key={stat.label} className="rounded-2xl border border-white/[0.06] bg-ink-800 p-6">
                   <dt className="sr-only">{stat.label}</dt>
                   <dd>
                     <span className="block text-4xl font-extrabold tracking-tightest text-brand">

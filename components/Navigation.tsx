@@ -81,7 +81,7 @@ export default function Navigation() {
       `}
       style={{ willChange: 'transform' }}
     >
-      <div className="border-b border-white/[0.06] bg-ink-950/80 backdrop-blur-xl">
+      <div className="border-b border-white/[0.06] bg-ink/80 backdrop-blur-xl">
       <nav
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10"
         aria-label="Navigation principale"
@@ -138,7 +138,7 @@ export default function Navigation() {
         {open && (
           <div
             id={menuId}
-            className="absolute top-full left-0 z-50 w-full border-t border-white/10 bg-ink-950/95 shadow-lg backdrop-blur-xl md:hidden"
+            className="absolute top-full left-0 z-50 w-full border-t border-white/10 bg-ink/95 shadow-lg backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col items-center py-4" role="list">
               {[...NAV, { label: content.nav.contact, id: 'contact' }].map((item) => (

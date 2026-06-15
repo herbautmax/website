@@ -56,6 +56,19 @@ html {
   --notion-table-header-bg: #181B1F !important;
 }
 
+/* Sur une page article, on ne veut pas afficher le tableau des propriétés
+   de la base Notion (date_publication, image, intro, slug, tags) que
+   react-notion-x rend en tête d'une ligne de collection. */
+.notion-content .notion-collection-page-properties {
+  display: none;
+}
+
+/* La partie blog doit utiliser la même police que le reste du site
+   (Schibsted Grotesk), et non la pile par défaut de react-notion-x. */
+.notion-content .notion {
+  font-family: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
+}
+
 .notion-quote {
   position: relative;
   background: none;                 /* Supprime le fond */
@@ -106,7 +119,7 @@ notion-quote,
   color: #C7CCD2;          /* Un blanc-gris doux */
   letter-spacing: 0;
   margin-bottom: 1.3em;
-  font-family: '"Schibsted Grotesk"', system-ui, sans-serif;
+  font-family: "Schibsted Grotesk", system-ui, sans-serif;
   max-width: 65ch;
 }
 

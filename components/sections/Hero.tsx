@@ -45,7 +45,7 @@ export default function Hero() {
               <img
                 src="/avatar-mh.png"
                 alt={hero.avatarAlt}
-                className="h-56 w-56 rounded-full border-4 border-brand bg-ink-800 object-cover shadow-card sm:h-64 sm:w-64 lg:h-72 lg:w-72"
+                className="h-48 w-48 rounded-full border-4 border-brand bg-ink-800 object-cover shadow-card sm:h-56 sm:w-56 lg:h-[264px] lg:w-[264px]"
               />
               <span
                 className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-brand px-4 py-1.5 text-xs font-bold text-brand-ink shadow"

@@ -36,7 +36,7 @@ type TagLabelProps = {
 export default function TagLabel({ tag }: TagLabelProps) {
   const icon = TAG_ICONS[tag] ?? null;
   return (
-    <span className="inline-flex items-center gap-1 rounded-lg border border-brand/20 bg-brand-soft px-2.5 py-1 text-xs font-semibold capitalize text-fog">
+    <span className="inline-flex items-center gap-1 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold capitalize text-brand">
       {icon ? <span className="text-brand" aria-hidden="true">{icon}</span> : null}
       {tag}
     </span>

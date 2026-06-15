@@ -57,7 +57,7 @@ export const content = {
       titlePrefix: "&",
       titleHighlight: "digital builder",
       subtitle:
-        "J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants — de la discovery au delivery.",
+        "J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants : de la discovery au delivery.",
       ctaPrimary: "Me contacter",
       ctaSecondary: "Voir mes missions",
       avatarAlt: "Maxime Herbaut",
@@ -74,7 +74,7 @@ export const content = {
       eyebrow: "À propos",
       title: "Le produit, de l'intuition au lancement.",
       bio1:
-        "Product Manager depuis 10 ans, j'ai piloté des produits B2B et B2C dans la proptech, l'industrie et le retail. Mon truc : relier le besoin terrain, la faisabilité technique et l'impact business — sans jamais sacrifier la finition.",
+        "Product Manager depuis 10 ans, j'ai piloté des produits B2B et B2C dans différents secteurs.",
       bio2:
         "Aujourd'hui en freelance, j'embarque les équipes sur des cycles courts : cadrer juste, prototyper vite, livrer ce qui compte. Et j'intègre l'IA là où elle fait gagner du temps réel.",
       stats: [
@@ -95,7 +95,7 @@ export const content = {
       eyebrow: "Services",
       title: "Quatre façons de travailler ensemble",
       intro:
-        "De l'idée floue au produit en prod. Vous prenez le bloc dont vous avez besoin — ou toute la chaîne.",
+        "Sur les différentes étapes d'un produit.",
       items: [
         {
           iconKey: "compass",
@@ -145,7 +145,7 @@ export const content = {
       eyebrow: "Contact",
       title: "On construit votre prochain produit ?",
       text:
-        "Parlez-moi de votre sujet en deux lignes. Je reviens vers vous sous 24 h avec une première lecture.",
+        "Envie d’échanger sur un projet ? Discutons !",
       ctaBook: "Prendre rendez-vous",
       ctaEmail: "maxime@herbaut.me",
       ctaLinkedin: "LinkedIn",
@@ -176,9 +176,7 @@ export const content = {
     eyebrow: "Curriculum vitæ",
     badge: "10 ans d'expérience",
     role: "Product Manager · Digital Builder",
-    pitchLine1:
-      "Avec 10 ans d'expérience, mon approche reste la même : aller vite, bien, et ajuster avec l'usage.",
-    pitchLine2: "La valeur se construit dans l'itération, pas dans la théorie.",
+    pitchLine: "J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants : de la discovery au delivery.",
     contactAriaLabel: "Coordonnées",
     emailSr: " (ouvre votre client de messagerie)",
     phoneSr: " (composer ce numéro)",
@@ -194,23 +192,43 @@ export const content = {
       formation: "Formation",
     },
     degreeLabel: "Diplôme d'ingénieur",
-    skills: [
-      "Discovery & user research",
-      "Delivery",
-      "Facilitation d'ateliers",
-      "Product builder",
-      "Pilotage d'équipes pluridisciplinaires",
-      "Management de projets",
-      "Méthodologies agiles (Scrum, Kanban)",
-      "Data & analytics",
-      "SQL / Snowflake",
-      "IA générative",
-      "No-code & outils d'automatisation (n8n, Make, Supabase)",
-      "Design thinking",
-      "Product Design Sprint",
-      "Collaboration UX / UI",
-      "Anglais C1 (TOEIC 905/990)",
-      "Communication claire & vulgarisation technique",
+    skillGroups: [
+      {
+        title: "Product",
+        items: [
+          "Discovery & user research",
+          "Product builder",
+          "Product Design Sprint",
+          "Design thinking",
+          "Méthodologies agiles (Scrum, Kanban)",
+        ],
+      },
+      {
+        title: "Delivery",
+        items: [
+          "Delivery",
+          "Pilotage d'équipes pluridisciplinaires",
+          "Management de projets",
+          "Facilitation d'ateliers",
+        ],
+      },
+      {
+        title: "Data & IA",
+        items: [
+          "Data & analytics",
+          "SQL / Snowflake",
+          "IA générative",
+          "No-code & automatisation (n8n, Make, Supabase)",
+        ],
+      },
+      {
+        title: "Soft skills",
+        items: [
+          "Communication & vulgarisation technique",
+          "Collaboration UX / UI",
+          "Anglais C1 (TOEIC 905/990)",
+        ],
+      },
     ],
     education: [
       {

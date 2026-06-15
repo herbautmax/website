@@ -12,7 +12,7 @@ type BlogMiniHeaderProps = {
 
 export default function BlogMiniHeader({ variant = "home" }: BlogMiniHeaderProps) {
   return (
-    <header className="fixed top-0 left-0 z-40 w-full border-b border-white/[0.06] bg-ink-950/80 backdrop-blur-xl">
+    <header className="fixed top-0 left-0 z-40 w-full border-b border-white/[0.06] bg-ink/80 backdrop-blur-xl">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6 sm:px-10">
         {/* Retour au site principal */}
         <Link
