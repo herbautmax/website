@@ -55,7 +55,7 @@ Extraits car répétés sur plusieurs pages :
   - **Services** : 4 icônes en pastille `bg-brand/10` `text-brand` ; cartes `cardBaseClasses` ; titres `text-mist`.
   - **Experiences** : timeline conservée ; eyebrow + titre ; badges date émeraude ; cartes tokens.
   - **BlogPreview** : titre sans dégradé ; bouton `Button` plein ; cartes tokens ; titres `text-mist` hover `text-brand`.
-  - **Contact** : CTA Calendly `Button` plein ; liens `text-brand` ; carte tokens.
+  - **Contact** : CTA prise de RDV (Google Calendar) `Button` plein ; liens `text-brand` ; carte tokens.
   - **Footer** : `bg-ink-950`, liens `text-brand`.
   - **Navigation** : comportement inchangé ; barre `bg-ink-800/90` ; liens `text-muted hover:text-brand` ;
     Contact en bouton plein.

@@ -44,12 +44,12 @@ export default function Contact() {
         </address>
 
         <a
-          href="https://calendly.com/maximeherbaut/30min"
+          href="https://calendar.app.google/mp1wi1iaEw7J5A4w6"
           className={buttonClasses('primary', 'md', 'w-full')}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Prendre rendez-vous sur Calendly
+          Prendre rendez-vous
           <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
         </a>
       </div>
