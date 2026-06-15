@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { buttonClasses } from './ui/Button';
+import { content } from '../content/site';
 
-const NAV = [
-  { label: 'À propos', id: 'about' },
-  { label: 'Services', id: 'services' },
-  { label: 'Expériences', id: 'experiences' },
-  { label: 'Blog', id: 'blog' },
-];
+const NAV = content.nav.items;
 
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);
@@ -98,7 +94,7 @@ export default function Navigation() {
             MH
           </span>
           <span className="text-[1.05rem] font-bold tracking-tight text-mist transition group-hover:text-brand">
-            Maxime Herbaut
+            {content.brand}
           </span>
         </a>
 
@@ -121,7 +117,7 @@ export default function Navigation() {
               onClick={(event) => handleNavClick(event, 'contact')}
               className={buttonClasses('primary', 'sm', 'focus-visible:ring-offset-ink-950')}
             >
-              Contact
+              {content.nav.contact}
             </a>
           </li>
         </ul>
@@ -130,7 +126,7 @@ export default function Navigation() {
         <button
           type="button"
           className="rounded-md p-2 text-mist hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 md:hidden"
-          aria-label="Menu"
+          aria-label={content.nav.menuLabel}
           aria-expanded={open}
           aria-controls={menuId}
           onClick={() => setOpen((v) => !v)}
@@ -145,7 +141,7 @@ export default function Navigation() {
             className="absolute top-full left-0 z-50 w-full border-t border-white/10 bg-ink-950/95 shadow-lg backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col items-center py-4" role="list">
-              {[...NAV, { label: 'Contact', id: 'contact' }].map((item) => (
+              {[...NAV, { label: content.nav.contact, id: 'contact' }].map((item) => (
                 <li key={item.id} className="w-full text-center">
                   <a
                     href={`#${item.id}`}
