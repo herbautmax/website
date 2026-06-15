@@ -45,14 +45,21 @@ Import alias `@/*` maps to the repo root (`tsconfig.json`).
 
 **CV → PDF.** `scripts/generate-cv-pdf.ts` launches Puppeteer against the running CV page (`/cv?print=1`) and writes `public/cv-maxime-herbaut.pdf`. Requires a live server. Run locally and commit the result (see CV PDF workflow above) — Vercel serves the committed file.
 
-## Redesign "Émeraude" (branch `redesign`)
+## Design guidelines ("Émeraude")
 
-The redesign described in `design_handoff_site_refonte/README.md` **has been applied** (see `docs/superpowers/specs/2026-06-15-refonte-emeraude-design.md`). The handoff + spec remain the reference for the design intent. When making further visual changes, keep them consistent with that direction:
+The "Émeraude" direction is the applied design system. Keep further visual work consistent with it. The source of truth for tokens is `tailwind.config.js` — use the tokens, never raw hex.
+
 - **Restyling discipline**: don't change data-fetching, routing, or component structure for cosmetic work — style and visual hierarchy only.
-- Single accent **émeraude `#12B981`** (`brand` token). No indigo `#6366f1`, no rainbow gradients (`bg-gradient-to-* from-...via-...to-...`). All lucide icons use `text-brand`. Title weights 400/700 (800 reserved for hero/large numbers).
-- `references/*.png` are the visual targets; `.dc.html` files are mockups, not production code.
+- **Single accent émeraude `#12B981`** (`brand`). No indigo `#6366f1`, no rainbow gradients (`bg-gradient-to-* from-...via-...to-...`). All lucide icons use `text-brand`. Title weights 400/700 (800 reserved for hero/large numbers).
+- **Background layering** (important for contrast):
+  - Page / content sections: `bg-ink` (`#181B1F`).
+  - Cards / surfaces: `bg-ink-800` (`#20242A`) — one subtle step lighter than the page.
+  - `ink-950` (`#0E1114`) is reserved for the **footer** and deliberate deep insets only — never as a content-section background (it makes cards look like they float).
+- **Cards** read by their edge + shadow, not by fill contrast: `cardBaseClasses` (in `components/sectionStyles.ts`) = `border-white/[0.06]` + `shadow-card` on a `bg-ink-800` surface.
+- **Chips** (`components/ui/Chip.tsx`): `soft` = neutral grey surface (`bg-ink-800`, used for passions); `tint` = émeraude (`bg-brand/15 text-brand`, used for skills / strong badges). **Blog tags** (`components/TagLabel.tsx`) are émeraude pills: `rounded-full bg-brand/15 text-brand`, icon `text-brand`.
+- **Fonts**: Schibsted Grotesk (`font-sans`, body + titles), Space Grotesk (`font-label`, uppercase eyebrows). Blog article bodies (react-notion-x) are forced to Schibsted via `.notion-content .notion` in `styles/globals.css`.
+- **CV print view**: `/cv?print=1` renders a compact **white, single-page A4** layout (2 columns), separate from the dark web view; `pages/_app.tsx` hides the footer and switches to a white background in print mode. After any CV change, regenerate the PDF locally — see CV PDF workflow above.
 - **Outstanding asset to supply**: `public/og-image.png` (1200×630) — OG/Twitter meta in `pages/index.tsx` already reference it via `NEXT_PUBLIC_SITE_URL`.
-- After any CV change, regenerate the PDF locally (font changed) — see CV PDF workflow above.
 
 ## Conventions
 
