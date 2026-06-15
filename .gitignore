@@ -42,3 +42,6 @@ public/sitemap-*.xml
 public/sitemap.xml
 public/robots.txt
 
+
+# TS build cache
+tsconfig.tsbuildinfo

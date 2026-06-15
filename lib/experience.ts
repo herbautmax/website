@@ -1,6 +1,6 @@
 // Ajoute un saut de ligne et une petite marge avant chaque "→", et garde la flèche avec le texte
 export function formatDescription(text: string) {
-  return text.replace(/\s*→\s*/g, '<br/><span class="inline-block mt-2 text-[#10b981]">→</span>&nbsp;');
+  return text.replace(/\s*→\s*/g, '<br/><span class="inline-block mt-2 text-[#12B981]">→</span>&nbsp;');
 }
 
 // Tri décroissant par date de fin (ou "aujourd'hui"), puis par date de début

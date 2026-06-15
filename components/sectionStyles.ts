@@ -1,8 +1,16 @@
+// Titre de section : blanc, serré, PLUS de dégradé.
 export const sectionTitleClasses =
-  'text-3xl sm:text-4xl font-black tracking-tight text-center text-white';
+  'text-4xl sm:text-5xl font-bold tracking-tightest text-mist';
 
-export const sectionTitleGradientClasses =
-  `${sectionTitleClasses} bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1]`;
+// On garde le nom pour ne pas casser les imports existants, mais SANS dégradé.
+export const sectionTitleGradientClasses = sectionTitleClasses;
 
+// Eyebrow réutilisable au-dessus des titres (Space Grotesk, majuscules, émeraude)
+export const eyebrowClasses =
+  'font-label text-sm font-semibold tracking-[0.16em] uppercase text-brand';
+
+// Carte : surface pleine + bordure fine, plus de dégradé. Hover discret émeraude.
 export const cardBaseClasses =
-  'rounded-3xl border border-white/10 bg-gradient-to-b from-[#1f2429] via-[#1b2024] to-[#15181c] shadow-[0_35px_85px_-45px_rgba(2,6,23,1)] transition-all duration-300 hover:-translate-y-1 hover:border-[#10b981] hover:shadow-[0_45px_110px_-40px_rgba(16,185,129,0.55)] focus-within:ring-2 focus-within:ring-[#10b981]/60 focus-within:ring-offset-2 focus-within:ring-offset-[#0f1115]';
+  'rounded-3xl border border-white/[0.07] bg-ink-800 shadow-card transition-all duration-300 ' +
+  'hover:-translate-y-1 hover:border-brand/60 hover:shadow-card-hover ' +
+  'focus-within:ring-2 focus-within:ring-brand/50';

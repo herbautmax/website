@@ -4,7 +4,7 @@
 
 
 body {
-  @apply font-sans bg-[#181b1f] text-gray-100;
+  @apply font-sans bg-ink text-fog;
 }
 
 html {
@@ -18,8 +18,8 @@ html {
   z-index: 100;
   padding: 0.75rem 1.25rem;
   border-radius: 0.75rem;
-  background-color: #10b981;
-  color: #0f172a;
+  background-color: #12B981;
+  color: #04150E;
   font-weight: 600;
   transform: translateY(-150%);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -27,11 +27,11 @@ html {
 
 .skip-link:focus {
   transform: translateY(0);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 25px rgba(18, 185, 129, 0.35);
 }
 
 :focus-visible {
-  outline: 3px solid #10b981;
+  outline: 3px solid #12B981;
   outline-offset: 3px;
 }
 
@@ -59,8 +59,8 @@ html {
 .notion-quote {
   position: relative;
   background: none;                 /* Supprime le fond */
-  color: #b3babf;                   /* Gris doux, plus discret */
-  border-left: 2px solid #10b981;   /* Bordure fine verte */
+  color: #9AA1AB;                   /* Gris doux, plus discret */
+  border-left: 2px solid #12B981;   /* Bordure fine verte */
   border-radius: 0;                 /* Pas d’arrondi */
   padding: 0.5rem 0 0.5rem 1.1rem;  /* Padding réduit */
   margin: 1.5rem 0;                 /* Marge réduite */
@@ -87,13 +87,13 @@ html {
 
 notion-quote,
 .notion-quote * {
-  color: #b3babf !important;
+  color: #9AA1AB !important;
 }
 
 
 .notion-h2 {
-  color: #10b981; 
-  font-weight: 800;
+  color: #12B981;
+  font-weight: 700;
   font-size: 2rem;        /* ~text-2xl */
   margin-top: 2.5rem;     /* Espace suffisant avant */
   margin-bottom: 1rem;    /* Espace après */
@@ -103,10 +103,10 @@ notion-quote,
 .notion-text {
   font-size: 1.13rem;      /* ~18px (text-lg) */
   line-height: 1.75;       /* Large, pour la lecture */
-  color: #f3f4f6;          /* Un blanc-gris doux */
+  color: #C7CCD2;          /* Un blanc-gris doux */
   letter-spacing: 0;
   margin-bottom: 1.3em;
-  font-family: 'Inter', 'Manrope', 'Sora', system-ui, sans-serif;
+  font-family: '"Schibsted Grotesk"', system-ui, sans-serif;
   max-width: 65ch;
 }
 

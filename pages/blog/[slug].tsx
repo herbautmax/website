@@ -57,14 +57,14 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#181b1f] text-gray-100 font-sans relative">
+    <div className="relative min-h-screen bg-ink font-sans text-fog">
       <BlogHead post={post} />
       <BlogMiniHeader variant="articles" />
-      <main id="main-content" className="max-w-3xl mx-auto py-10 px-4 pt-20" tabIndex={-1}>
-        <h1 className="text-4xl sm:text-5xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1] drop-shadow-xl tracking-tight">
+      <main id="main-content" className="mx-auto max-w-3xl px-4 py-10 pt-20" tabIndex={-1}>
+        <h1 className="mb-2 text-4xl font-bold tracking-tightest text-mist sm:text-5xl">
           {post.title}
         </h1>
-        <p className="text-sm text-gray-300 mb-2">{formatDateFR(post.date)}</p>
+        <p className="mb-2 text-sm text-muted">{formatDateFR(post.date)}</p>
         <div className="flex flex-wrap gap-2 mb-8">
           {post.tags?.map(tag => (
             <TagLabel key={tag} tag={tag} />
@@ -79,7 +79,7 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
         <button
           onClick={scrollToTop}
           aria-label="Retour en haut de la page"
-          className="fixed bottom-8 right-8 bg-[#10b981] hover:bg-[#0e9b73] text-white p-3 rounded-full shadow-lg transition transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#10b981]"
+          className="fixed bottom-8 right-8 rounded-full bg-brand p-3 text-brand-ink shadow-lg transition hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           title="Retour en haut"
         >
           <svg

@@ -10,6 +10,8 @@ import { getBlogPosts } from '../lib/notion'
 import { Post } from '../types'
 import { GetStaticProps } from 'next'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+
 interface HomeProps {
   posts: Post[]
 }
@@ -39,8 +41,24 @@ export default function Home({ posts }: HomeProps) {
           name="description"
           content="Découvrez le profil de Maxime Herbaut, Product Manager à Lille : services, expériences et articles autour du produit et de l’innovation."
         />
+        <meta property="og:title" content="Maxime Herbaut — Product Manager & Digital Builder" />
+        <meta
+          property="og:description"
+          content="Product Manager à Lille : discovery, delivery, no-code & IA. Services, expériences et blog."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}/`} />
+        <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+        <meta property="og:site_name" content="Maxime Herbaut" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Maxime Herbaut — Product Manager & Digital Builder" />
+        <meta
+          name="twitter:description"
+          content="Product Manager à Lille : discovery, delivery, no-code & IA."
+        />
+        <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
       </Head>
-      <div className="bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] min-h-screen text-gray-100 font-sans transition-colors duration-300">
+      <div className="min-h-screen bg-ink font-sans text-fog">
         <Navigation />
         <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>
           <Hero />

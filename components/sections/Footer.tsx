@@ -1,16 +1,16 @@
 export default function Footer() {
   return (
-    <footer className="w-full text-center py-6 text-gray-500 text-sm bg-[#191b1f] border-t border-[#23272e]">
+    <footer className="w-full border-t border-white/10 bg-ink-950 py-6 text-center text-sm text-muted">
       <a
         href="/"
-        className="hover:text-[#10b981] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#191b1f] rounded"
+        className="rounded font-semibold transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
       >
         Maxime Herbaut
       </a>{' '}
       © {new Date().getFullYear()} —
       <a
         href="mailto:maxime@herbaut.me"
-        className="hover:underline text-[#10b981] ml-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#191b1f] rounded"
+        className="ml-2 rounded text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
       >
         Contact
       </a>

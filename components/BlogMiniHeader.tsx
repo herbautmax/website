@@ -12,11 +12,11 @@ type BlogMiniHeaderProps = {
 
 export default function BlogMiniHeader({ variant = "home" }: BlogMiniHeaderProps) {
   return (
-    <header className="fixed top-0 left-0 w-full z-40 bg-[#23272a]/90 border-b border-[#23272e] backdrop-blur flex items-center justify-between px-4 sm:px-8 py-2 h-14">
+    <header className="fixed top-0 left-0 z-40 flex h-14 w-full items-center justify-between border-b border-white/10 bg-ink-800/90 px-4 py-2 backdrop-blur sm:px-8">
       {/* Logo à gauche */}
       <Link
         href="/"
-        className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a] rounded"
+        className="group flex items-center gap-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800"
         aria-label="Revenir à l’accueil"
       >
         <Image
@@ -33,7 +33,7 @@ export default function BlogMiniHeader({ variant = "home" }: BlogMiniHeaderProps
       {variant === "articles" && (
         <Link
           href="/blog"
-          className="text-[#10b981] text-sm font-semibold hover:underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a] rounded"
+          className="rounded text-sm font-semibold text-brand transition hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800"
           aria-current="page"
         >
           ← Tous les articles

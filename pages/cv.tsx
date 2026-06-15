@@ -4,7 +4,7 @@ import {
   Soup, Volleyball, Mountain, Trees, Theater, Linkedin, Download
 } from 'lucide-react';
 
-import Tag from '../components/ui/Tag';
+import Chip from '../components/ui/Chip';
 import { experiencesData } from '../data/experiences';
 import { sortExperiencesDesc, formatDescription } from '../lib/experience';
 import { passions } from '../data/passions';
@@ -18,7 +18,7 @@ const skills = [
   "Pilotage d'équipes pluridisciplinaires",
   'Management de projets',
   'Méthodologies agiles (Scrum, Kanban)',
-  
+
   // 📊 Data & analytique
   'Data & analytics',
   'SQL / Snowflake',
@@ -65,36 +65,35 @@ export default function CVPage() {
         <meta name="description" content="Curriculum vitae de Maxime Herbaut, Product Manager." />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-b from-[#181b1f] via-[#22272a] to-[#191b1f] text-gray-100 font-sans">
-        <main id="main-content" className="max-w-5xl mx-auto px-6 py-16 space-y-12" tabIndex={-1}>
-         
-         
+      <div className="min-h-screen bg-ink font-sans text-fog">
+        <main id="main-content" className="mx-auto max-w-5xl space-y-12 px-6 py-16" tabIndex={-1}>
+
           {/* Header */}
           <section
-            className="rounded-3xl border border-white/10 bg-[#22272a]/95 shadow-2xl p-8 md:p-10"
+            className="rounded-3xl border border-white/10 bg-ink-800 p-8 shadow-card md:p-10"
             aria-labelledby="cv-header"
           >
             <div className="grid gap-8 md:grid-cols-[1.6fr,1fr] md:items-start">
               {/* Colonne gauche : Identité + pitch */}
               <header className="space-y-5" id="cv-header">
-                <div className="flex items-center gap-3 text-xs md:text-sm uppercase tracking-widest text-[#10b981] font-semibold">
+                <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-brand md:text-sm">
                   <Sparkles className="h-4 w-4 md:h-5 md:w-5" aria-hidden="true" />
-                  <span>Curriculum vitæ</span>
+                  <span className="font-label">Curriculum vitæ</span>
                   <span className="mx-2 h-3 w-px bg-white/20" aria-hidden="true" />
-                  <span className="rounded-full bg-[#10b981]/15 px-2.5 py-1 text-[#10b981] ring-1 ring-inset ring-[#10b981]/30">
+                  <span className="rounded-full bg-brand/15 px-2.5 py-1 text-brand ring-1 ring-inset ring-brand/30">
                     10 ans d’expérience
                   </span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl font-black text-white leading-tight">
+                <h1 className="text-4xl font-bold leading-tight tracking-tightest text-mist md:text-5xl">
                   Maxime Herbaut
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-300 font-semibold">
+                <p className="text-lg font-semibold text-fog md:text-xl">
                   Product Manager · Digital Builder
                 </p>
 
-                <p className="max-w-2xl text-gray-300 leading-relaxed">
+                <p className="max-w-2xl leading-relaxed text-fog">
                   Avec 10 ans d’expérience, mon approche reste la même : aller vite, bien, et ajuster avec l’usage.
                   <br className="hidden sm:block" />
                   La valeur se construit dans l’itération, pas dans la théorie.
@@ -103,39 +102,39 @@ export default function CVPage() {
 
               {/* Colonne droite : Coordonnées + action */}
               <aside
-                className="rounded-2xl border border-white/10 bg-[#181b1f] p-6 md:p-7 space-y-4 flex flex-col justify-between"
+                className="flex flex-col justify-between space-y-4 rounded-2xl border border-white/10 bg-ink-950 p-6 md:p-7"
                 aria-label="Coordonnées"
               >
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-gray-300">
-                    <Mail className="h-5 w-5 text-[#10b981]" aria-hidden="true" />
+                  <div className="flex items-center gap-3 text-fog">
+                    <Mail className="h-5 w-5 text-brand" aria-hidden="true" />
                     <a
                       href="mailto:maxime@herbaut.me"
-                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
+                      className="rounded transition hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
                     >
                       maxime@herbaut.me
                       <span className="sr-only"> (ouvre votre client de messagerie)</span>
                     </a>
                   </div>
 
-                  <div className="flex items-center gap-3 text-gray-300">
-                    <Phone className="h-5 w-5 text-[#10b981]" aria-hidden="true" />
+                  <div className="flex items-center gap-3 text-fog">
+                    <Phone className="h-5 w-5 text-brand" aria-hidden="true" />
                     <a
                       href="tel:+33660160713"
-                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
+                      className="rounded transition hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
                     >
                       +33 6 60 16 07 13
                       <span className="sr-only"> (composer ce numéro)</span>
                     </a>
                   </div>
 
-                  <div className="flex items-center gap-3 text-gray-300">
-                    <Linkedin className="h-5 w-5 text-[#10b981]" aria-hidden="true" />
+                  <div className="flex items-center gap-3 text-fog">
+                    <Linkedin className="h-5 w-5 text-brand" aria-hidden="true" />
                     <a
                       href="https://www.linkedin.com/in/maximeherbaut"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="transition hover:text-[#10b981] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981]/40 rounded"
+                      className="rounded transition hover:text-brand hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
                     >
                       linkedin.com/in/maximeherbaut
                       <span className="sr-only"> (ouvre dans un nouvel onglet)</span>
@@ -148,49 +147,47 @@ export default function CVPage() {
                   href="/cv-maxime-herbaut.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#10b981]/20 text-[#10b981] font-semibold px-4 py-2 border border-[#10b981]/40 hover:bg-[#10b981]/30 transition"
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl border border-brand/40 bg-brand/20 px-4 py-2 font-semibold text-brand transition hover:bg-brand/30"
                 >
                   <Download className="h-4 w-4" /> Télécharger le CV
                 </a>
               </aside>
 
               {/* Citation centrée sous les deux colonnes */}
-              <div className="md:col-span-2 mt-8 flex justify-center">
-                <blockquote className="max-w-xl text-center text-gray-200 italic border-t border-white/10 pt-4 leading-relaxed">
+              <div className="mt-8 flex justify-center md:col-span-2">
+                <blockquote className="max-w-xl border-t border-white/10 pt-4 text-center italic leading-relaxed text-fog">
                   « La perfection, c’est quand il n’y a plus rien à enlever. »
-                  <span className="block text-gray-500 text-sm mt-1">— Antoine de Saint-Exupéry</span>
+                  <span className="mt-1 block text-sm text-muted">— Antoine de Saint-Exupéry</span>
                 </blockquote>
               </div>
             </div>
           </section>
 
-
-
+          {/* Expériences */}
           <section className="space-y-6">
-             <div className="flex items-center gap-3">
-              <Briefcase className="w-7 h-7 text-[#10b981]" />
-              <h2 className="text-3xl font-extrabold text-white tracking-tight">Expériences</h2>
+            <div className="flex items-center gap-3">
+              <Briefcase className="h-7 w-7 text-brand" />
+              <h2 className="text-3xl font-bold tracking-tightest text-mist">Expériences</h2>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {experiencesSorted.map((experience) => (
                 <article
                   key={`${experience.company}-${experience.role}`}
-                  className="relative pt-8 bg-[#22272a] border border-white/10 rounded-2xl p-6 shadow-lg flex flex-col justify-between"
+                  className="relative flex flex-col justify-between rounded-2xl border border-white/10 bg-ink-800 p-6 pt-8 shadow-card"
                 >
                   {/* 🟢 Badge date dans le coin */}
-                  <div className="absolute top-0 right-0 bg-[#10b981]/20 text-[#10b981] text-xs font-semibold px-3 py-1 rounded-bl-2xl rounded-tr-2xl border border-[#10b981]/30">
+                  <div className="absolute right-0 top-0 rounded-bl-2xl rounded-tr-2xl border border-brand/30 bg-brand/20 px-3 py-1 text-xs font-semibold text-brand">
                     {experience.date}
                   </div>
 
                   <div className="space-y-3">
                     <header className="space-y-1">
-                      {/* (on enlève le <Tag> ici aussi) */}
-                      <h3 className="text-2xl font-bold text-white">{experience.company}</h3>
-                      <p className="text-sm uppercase tracking-wide text-gray-400">{experience.role}</p>
+                      <h3 className="text-2xl font-bold text-mist">{experience.company}</h3>
+                      <p className="text-sm uppercase tracking-wide text-muted">{experience.role}</p>
                     </header>
 
                     <p
-                      className="text-gray-300 leading-relaxed text-sm"
+                      className="text-sm leading-relaxed text-fog"
                       dangerouslySetInnerHTML={{ __html: formatDescription(experience.description) }}
                     />
                   </div>
@@ -202,17 +199,14 @@ export default function CVPage() {
           {/* Compétences */}
           <section className="space-y-6">
             <div className="flex items-center gap-3">
-              <Sparkles className="w-7 h-7 text-[#10b981]" />
-              <h2 className="text-3xl font-extrabold text-white tracking-tight">Compétences clés</h2>
+              <Sparkles className="h-7 w-7 text-brand" />
+              <h2 className="text-3xl font-bold tracking-tightest text-mist">Compétences clés</h2>
             </div>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="bg-[#10b981]/15 text-[#10b981] font-semibold px-4 py-2 rounded-xl border border-[#10b981]/30"
-                >
+                <Chip key={skill} variant="tint" className="rounded-xl px-4 py-2">
                   {skill}
-                </span>
+                </Chip>
               ))}
             </div>
           </section>
@@ -220,66 +214,49 @@ export default function CVPage() {
           {/* Passions */}
           <section className="space-y-6">
             <div className="flex items-center gap-3">
-              <Soup className="w-7 h-7 text-[#10b981]" />
-              <h2 className="text-3xl font-extrabold text-white tracking-tight">Passions</h2>
+              <Soup className="h-7 w-7 text-brand" />
+              <h2 className="text-3xl font-bold tracking-tightest text-mist">Passions</h2>
             </div>
 
             <div className="flex flex-wrap gap-3">
               {passions.map((p) => {
-                // On utilise ici p.icon, et non plus p.key
-                const iconMap = {
-                  soup: Soup,
-                  volleyball: Volleyball,
-                  mountain: Mountain,
-                  trees: Trees,
-                  theater: Theater,
-                } as const;
-
                 const Icon = iconMap[p.icon] ?? Soup;
-
                 return (
-                  <span
-                    key={p.key}
-                    className="flex items-center gap-2 bg-[#10b981]/20 text-[#10b981] rounded-lg px-4 py-2 font-semibold"
-                  >
-                    <Icon className="w-5 h-5" />
+                  <Chip key={p.key} icon={<Icon className="h-5 w-5" />} className="px-4 py-2">
                     {p.label}
-                  </span>
+                  </Chip>
                 );
               })}
             </div>
           </section>
 
-
           {/* Formation */}
           <section className="space-y-6">
             <div className="flex items-center gap-3">
-              <GraduationCap className="w-7 h-7 text-[#10b981]" />
-              <h2 className="text-3xl font-extrabold text-white tracking-tight">Formation</h2>
+              <GraduationCap className="h-7 w-7 text-brand" />
+              <h2 className="text-3xl font-bold tracking-tightest text-mist">Formation</h2>
             </div>
 
             <div className="grid gap-6 md:grid-cols-1">
               {education.map((item) => (
                 <div
                   key={item.school}
-                  className="relative bg-gradient-to-br from-[#22272a] to-[#1a1d20] border border-white/10 rounded-2xl p-8 shadow-lg hover:border-[#10b981]/40 transition-all duration-300"
+                  className="relative rounded-2xl border border-white/10 bg-ink-800 p-8 shadow-card transition-all duration-300 hover:border-brand/40"
                 >
                   {/* Date badge */}
-                  <div className="absolute top-0 right-0 bg-[#10b981]/20 text-[#10b981] text-xs font-semibold px-3 py-1 rounded-bl-2xl rounded-tr-2xl">
+                  <div className="absolute right-0 top-0 rounded-bl-2xl rounded-tr-2xl bg-brand/20 px-3 py-1 text-xs font-semibold text-brand">
                     {item.date}
                   </div>
 
                   {/* Contenu */}
-                  <h3 className="text-2xl font-bold text-white mb-1">{item.school}</h3>
-                  <p className="text-[#10b981] font-semibold text-sm uppercase tracking-wide mb-3">
+                  <h3 className="mb-1 text-2xl font-bold text-mist">{item.school}</h3>
+                  <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-brand">
                     Diplôme d’ingénieur
                   </p>
-                  <p className="text-gray-300 leading-relaxed text-sm">
-                    {item.degree}
-                  </p>
+                  <p className="text-sm leading-relaxed text-fog">{item.degree}</p>
 
                   {/* Ligne décorative */}
-                  <div className="mt-5 h-[2px] w-20 bg-[#10b981]/50 rounded-full" />
+                  <div className="mt-5 h-[2px] w-20 rounded-full bg-brand/50" />
                 </div>
               ))}
             </div>
