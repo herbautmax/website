@@ -35,9 +35,6 @@ export default function Footer() {
           >
             {content.footer.linkedin}
           </a>
-          <a href={content.contactInfo.emailHref} className={linkClasses}>
-            {content.footer.email}
-          </a>
           <a href="/blog" className={linkClasses}>
             {content.footer.blog}
           </a>

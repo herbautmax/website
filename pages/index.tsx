@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
 import Services from '../components/sections/Services'
-import Testimonials from '../components/sections/Testimonials'
+// import Testimonials from '../components/sections/Testimonials' // pas de témoignages pour l'instant
 import Experiences from '../components/sections/Experiences'
 import BlogPreview from '../components/sections/BlogPreview'
 import Contact from '../components/sections/Contact'
@@ -57,7 +57,7 @@ export default function Home({ posts }: HomeProps) {
           <Hero />
           <About />
           <Services />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <Experiences />
           <BlogPreview posts={posts} />
           <Contact />

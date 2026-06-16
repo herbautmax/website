@@ -41,12 +41,6 @@ export default function Contact() {
               <span className="sr-only">{contact.newTabSr}</span>
             </a>
             <a
-              href={info.emailHref}
-              className={`inline-flex items-center justify-center rounded-xl border border-brand-ink/30 px-7 py-3.5 text-base font-semibold text-brand-ink transition-colors hover:bg-brand-ink/10 ${ringOnBrand}`}
-            >
-              {contact.ctaEmail}
-            </a>
-            <a
               href={info.linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
