@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 
 import Chip from '../components/ui/Chip';
+import JsonLd from '../components/JsonLd';
+import { personSchema } from '../lib/structuredData';
 import { experiencesData } from '../data/experiences';
 import { sortExperiencesDesc, formatDescription } from '../lib/experience';
 import { passions } from '../data/passions';
@@ -13,6 +15,7 @@ import { content } from '../content/site';
 
 const cv = content.cv;
 const info = content.contactInfo;
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 // Mapping des icônes pour les passions (clés alignées avec /data/passions)
 const iconMap = {
@@ -38,7 +41,19 @@ export default function CVPage() {
       <Head>
         <title>{content.meta.cv.title}</title>
         <meta name="description" content={content.meta.cv.description} />
+        <meta property="og:title" content={content.meta.cv.title} />
+        <meta property="og:description" content={content.meta.cv.description} />
+        <meta property="og:type" content="profile" />
+        <meta property="og:url" content={`${siteUrl}/cv`} />
+        <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+        <meta property="og:site_name" content={content.brand} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={content.meta.cv.title} />
+        <meta name="twitter:description" content={content.meta.cv.description} />
+        <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+        <link rel="canonical" href={`${siteUrl}/cv`} />
       </Head>
+      <JsonLd data={personSchema()} />
 
       {isPrint ? (
         <PrintCV experiences={experiencesSorted} />
@@ -193,7 +208,7 @@ function WebCV({ experiences }: { experiences: typeof experiencesData }) {
                 </div>
                 <h3 className="mb-1 text-2xl font-bold text-mist">{item.school}</h3>
                 <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-brand">
-                  {cv.degreeLabel}
+                  {item.label}
                 </p>
                 <p className="text-sm leading-relaxed text-fog">{item.degree}</p>
                 <div className="mt-5 h-[2px] w-20 rounded-full bg-brand/50" />
@@ -282,7 +297,7 @@ function PrintCV({ experiences }: { experiences: typeof experiencesData }) {
               <div key={item.school} className="space-y-0.5">
                 <p className="text-[11px] font-bold">{item.school}</p>
                 <p className="text-[10px] font-semibold text-brand">
-                  {cv.degreeLabel} · {item.date}
+                  {item.label} · {item.date}
                 </p>
                 <p className="text-[10px] leading-[1.3] text-[#3A3F47]">{item.degree}</p>
               </div>

@@ -11,6 +11,8 @@ import { getBlogPosts } from '../lib/notion'
 import { Post } from '../types'
 import { GetStaticProps } from 'next'
 import { content } from '../content/site'
+import JsonLd from '../components/JsonLd'
+import { personSchema, websiteSchema } from '../lib/structuredData'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
@@ -50,7 +52,10 @@ export default function Home({ posts }: HomeProps) {
         <meta name="twitter:title" content={content.meta.home.title} />
         <meta name="twitter:description" content={content.meta.home.twitterDescription} />
         <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+        <link rel="canonical" href={`${siteUrl}/`} />
       </Head>
+      <JsonLd data={personSchema()} />
+      <JsonLd data={websiteSchema()} />
       <div className="min-h-screen bg-ink font-sans text-fog">
         <Navigation />
         <main id="main-content" className="flex flex-col items-center w-full" tabIndex={-1}>

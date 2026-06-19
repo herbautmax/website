@@ -19,7 +19,7 @@ export const content = {
   // Métadonnées SEO / OG
   meta: {
     home: {
-      title: "Maxime Herbaut — Product Manager & Digital Builder",
+      title: "Maxime Herbaut — Product Manager & Product Builder",
       description:
         "Découvrez le profil de Maxime Herbaut, Product Manager à Lille : services, expériences et articles autour du produit et de l'innovation.",
       ogDescription:
@@ -55,7 +55,7 @@ export const content = {
       badge: "Disponible pour missions · Lille & remote",
       titleLine1: "Product Manager",
       titlePrefix: "&",
-      titleHighlight: "digital builder",
+      titleHighlight: "product builder",
       subtitle:
         "J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants : de la discovery au delivery.",
       ctaPrimary: "Me contacter",
@@ -175,7 +175,7 @@ export const content = {
   cv: {
     eyebrow: "Curriculum vitæ",
     badge: "10 ans d'expérience",
-    role: "Product Manager · Digital Builder",
+    role: "Product Manager · Product Builder",
     pitchLine: "J'aide les équipes à imaginer, concevoir et lancer des produits digitaux utiles, robustes et élégants : de la discovery au delivery.",
     contactAriaLabel: "Coordonnées",
     emailSr: " (ouvre votre client de messagerie)",
@@ -194,45 +194,52 @@ export const content = {
     degreeLabel: "Diplôme d'ingénieur",
     skillGroups: [
       {
-        title: "Product",
+        title: "IA & Product Building",
         items: [
-          "Discovery & user research",
-          "Product builder",
-          "Product Design Sprint",
+          "Product builder IA (RAG, agents)",
+          "Prototypage rapide (POC)",
+          "No-code & automatisation (n8n, Make, Supabase)",
+          "SQL / Snowflake",
+        ],
+      },
+      {
+        title: "Product Management",
+        items: [
+          "User research",
           "Design thinking",
+          "Priorisation & roadmap",
+          "Specs & user stories",
           "Méthodologies agiles (Scrum, Kanban)",
         ],
       },
       {
-        title: "Delivery",
+        title: "Data & Impact",
         items: [
-          "Delivery",
-          "Pilotage d'équipes pluridisciplinaires",
-          "Management de projets",
-          "Facilitation d'ateliers",
-        ],
-      },
-      {
-        title: "Data & IA",
-        items: [
-          "Data & analytics",
-          "SQL / Snowflake",
-          "IA générative",
-          "No-code & automatisation (n8n, Make, Supabase)",
+          "Analytics produit",
+          "KPIs & impact business",
+          "A/B testing & expérimentation",
         ],
       },
       {
         title: "Soft skills",
         items: [
           "Communication & vulgarisation technique",
-          "Collaboration UX / UI",
+          "Pilotage d'équipes pluridisciplinaires",
           "Anglais C1 (TOEIC 905/990)",
         ],
       },
     ],
     education: [
       {
+        school: "Agentic Engineering",
+        label: "Certification Hoko",
+        degree:
+          "Formation de 2 jours pour équipes tech & produit : Claude Code, context engineering, MCP et intégration CI/CD. Mise en pratique sur codebases réelles (IONI).",
+        date: "Juin 2026",
+      },
+      {
         school: "ITEEM Lille",
+        label: "Diplôme d'ingénieur",
         degree:
           "Diplôme d'ingénieur de l'École Centrale de Lille et Skema Business School. Double compétence en ingénierie généraliste et management de projet, avec spécialisation e-business et mobilité connectée.",
         date: "2010 – 2015",

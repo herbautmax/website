@@ -7,6 +7,8 @@ import TagLabel from "../../components/TagLabel";
 import BlogMiniHeader from "@/components/BlogMiniHeader";
 import { content } from "../../content/site";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 type BlogPageProps = {
   posts: Post[];
 };
@@ -22,6 +24,14 @@ export default function BlogPage({ posts }: BlogPageProps) {
       <Head>
         <title>{content.meta.blogList.title}</title>
         <meta name="description" content={content.meta.blogList.description} />
+        <meta property="og:title" content={content.meta.blogList.title} />
+        <meta property="og:description" content={content.meta.blogList.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}/blog`} />
+        <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+        <meta property="og:site_name" content={content.brand} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href={`${siteUrl}/blog`} />
       </Head>
       <BlogMiniHeader variant="home" />
       <main id="main-content" className="mx-auto flex max-w-3xl flex-grow flex-col gap-10 px-4 pt-20" tabIndex={-1}>
