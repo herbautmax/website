@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
+import { buttonClasses } from './ui/Button';
+import { content } from '../content/site';
 
-const NAV = [
-  { label: 'À propos', id: 'about' },
-  { label: 'Services', id: 'services' },
-  { label: 'Expériences', id: 'experiences' },
-  { label: 'Blog', id: 'blog' },
-  { label: 'Contact', id: 'contact' },
-];
+const NAV = content.nav.items;
 
 const scrollToSection = (id: string) => {
   const el = document.getElementById(id);
@@ -86,46 +81,52 @@ export default function Navigation() {
       `}
       style={{ willChange: 'transform' }}
     >
+      <div className="border-b border-white/[0.06] bg-ink/80 backdrop-blur-xl">
       <nav
-        className="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8 py-3 mt-4 bg-[#23272a]/90 rounded-xl shadow-none border border-transparent"
+        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10"
         aria-label="Navigation principale"
       >
-        <a href="#hero" className="flex items-center gap-3 group select-none focus-visible:outline-none">
-          <div className="w-10 h-10 relative">
-            <Image
-              src="/logo.png"
-              alt="Logo Maxime Herbaut"
-              width={40}
-              height={40}
-              className="rounded-lg"
-              priority
-            />
-          </div>
-          <span className="font-semibold text-lg text-gray-50 group-hover:text-[#10b981] transition">
-            Maxime Herbaut
+        <a href="#hero" className="group flex select-none items-center gap-3 focus-visible:outline-none">
+          <span
+            className="flex h-9 w-9 items-center justify-center rounded-[0.6rem] bg-brand text-base font-extrabold tracking-tightest text-brand-ink"
+            aria-hidden="true"
+          >
+            MH
+          </span>
+          <span className="text-[1.05rem] font-bold tracking-tight text-mist transition group-hover:text-brand">
+            {content.brand}
           </span>
         </a>
 
         {/* Desktop nav */}
-        <ul className="hidden md:flex gap-6" role="list">
+        <ul className="hidden items-center gap-6 md:flex" role="list">
           {NAV.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={(event) => handleNavClick(event, item.id)}
-                className="text-gray-200 hover:text-[#10b981] text-base font-medium px-2 py-1 rounded-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
+                className="rounded-lg px-2 py-1 text-base font-medium text-muted transition hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
               >
                 {item.label}
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="#contact"
+              onClick={(event) => handleNavClick(event, 'contact')}
+              className={buttonClasses('primary', 'sm', 'focus-visible:ring-offset-ink-950')}
+            >
+              {content.nav.contact}
+            </a>
+          </li>
         </ul>
 
         {/* Mobile nav toggle */}
         <button
           type="button"
-          className="md:hidden p-2 rounded-md hover:bg-[#10b981]/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
-          aria-label="Menu"
+          className="rounded-md p-2 text-mist hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 md:hidden"
+          aria-label={content.nav.menuLabel}
           aria-expanded={open}
           aria-controls={menuId}
           onClick={() => setOpen((v) => !v)}
@@ -137,15 +138,15 @@ export default function Navigation() {
         {open && (
           <div
             id={menuId}
-            className="absolute top-full left-0 w-full bg-[#23272a] shadow-lg rounded-b-xl border-t border-[#23272e] md:hidden z-50"
+            className="absolute top-full left-0 z-50 w-full border-t border-white/10 bg-ink/95 shadow-lg backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col items-center py-4" role="list">
-              {NAV.map((item) => (
+              {[...NAV, { label: content.nav.contact, id: 'contact' }].map((item) => (
                 <li key={item.id} className="w-full text-center">
                   <a
                     href={`#${item.id}`}
                     onClick={(event) => handleNavClick(event, item.id)}
-                    className="block text-gray-200 hover:text-[#10b981] text-lg font-medium px-4 py-2 rounded-lg transition mb-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a]"
+                    className="mb-1 block rounded-lg px-4 py-2 text-lg font-medium text-fog transition hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800"
                   >
                     {item.label}
                   </a>
@@ -155,6 +156,7 @@ export default function Navigation() {
           </div>
         )}
       </nav>
+      </div>
     </header>
   );
 }

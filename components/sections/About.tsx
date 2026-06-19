@@ -1,98 +1,72 @@
-import {
-  MapPin,
-  Briefcase,
-  Leaf,
-  Bot,
-  Soup,
-  Volleyball,
-  Mountain,
-  Trees,
-  Theater,
-  Compass
-} from 'lucide-react';
-import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
+import { Soup, Volleyball, Mountain, Trees, Theater } from 'lucide-react';
+import { eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
+import Chip from '../ui/Chip';
+import { content } from '../../content/site';
 
+const about = content.home.about;
 
+const passionIcons = {
+  soup: Soup,
+  volleyball: Volleyball,
+  mountain: Mountain,
+  trees: Trees,
+  theater: Theater,
+} as const;
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-4 w-full bg-transparent scroll-mt-24" aria-labelledby="about-title">
-      <div className="max-w-5xl mx-auto text-center mb-12">
-        <h2 id="about-title" className={sectionTitleGradientClasses}>
-          À propos
-        </h2>
-        <p className="mt-3 text-base text-gray-300">
-        </p>
-      </div>
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-stretch">
-        {/* À propos */}
-        <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="about-details">
-          <h3 id="about-details" className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <Briefcase className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
-            À propos
-          </h3>
-          <ul className="space-y-4 text-gray-100 text-lg">
-            <li className="flex items-center gap-3">
-              <MapPin className="text-[#6366f1] w-6 h-6" aria-hidden="true" />
-              <span>Lille</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Briefcase className="text-[#10b981] w-6 h-6" aria-hidden="true" />
-              <span>10 ans en agence & start-up & freelance</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Compass className="text-[#6366f1] w-6 h-6" aria-hidden="true" />
-              <span>Product discovery, delivery & strategy</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Leaf className="text-[#10b981] w-6 h-6" aria-hidden="true" />
-              <span>Expérience utilisateur & impact</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Bot className="text-[#6366f1] w-6 h-6" aria-hidden="true" />
-              <span>No-code, automatisation, IA</span>
-            </li>
-          </ul>
-        </article>
-        {/* Passions */}
-        <article className={`${cardBaseClasses} h-full flex flex-col p-10 text-left`} aria-labelledby="passions-title">
-          <h3 id="passions-title" className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-            <Soup className="w-7 h-7 text-[#10b981]" aria-hidden="true" />
-            Passions
-          </h3>
-          <ul className="flex flex-wrap gap-3">
-            <li>
-              <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
-                <Soup className="w-6 h-6" aria-hidden="true" />
-                Cuisine & gastronomie
-              </span>
-            </li>
-            <li>
-              <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
-                <Volleyball className="w-6 h-6" aria-hidden="true" />
-                Volley, beach-volley
-              </span>
-            </li>
-            <li>
-              <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
-                <Mountain className="w-6 h-6" aria-hidden="true" />
-                Randonnée
-              </span>
-            </li>
-            <li>
-              <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
-                <Trees className="w-6 h-6" aria-hidden="true" />
-                Nature
-              </span>
-            </li>
-            <li>
-              <span className="flex items-center gap-2 bg-[#134e4a] text-[#f0fdf4] rounded-lg px-4 py-2 font-semibold text-lg">
-                <Theater className="w-6 h-6" aria-hidden="true" />
-                Théâtre
-              </span>
-            </li>
-          </ul>
-        </article>
+    <section id="about" className="w-full py-24 scroll-mt-24" aria-labelledby="about-title">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:gap-16">
+          {/* Titre */}
+          <div className="flex flex-col gap-4">
+            <span className={eyebrowClasses}>{about.eyebrow}</span>
+            <h2 id="about-title" className={sectionTitleClasses}>
+              {about.title}
+            </h2>
+          </div>
+
+          {/* Bio + stats */}
+          <div>
+            <p className="mb-6 text-lg leading-relaxed text-fog sm:text-xl">
+              {about.bio1}
+            </p>
+            <p className="mb-9 text-lg leading-relaxed text-muted sm:text-xl">
+              {about.bio2}
+            </p>
+
+            <dl className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {about.stats.map((stat) => (
+                <div key={stat.label} className="rounded-2xl border border-white/[0.06] bg-ink-800 p-6">
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span className="block text-4xl font-extrabold tracking-tightest text-brand">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1 block text-sm text-muted">{stat.label}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            {/* Passions */}
+            <div className="mt-10 border-t border-white/[0.08] pt-8">
+              <p className="mb-4 font-label text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                {about.passionsLabel}
+              </p>
+              <ul className="flex flex-wrap gap-3">
+                {about.passions.map(({ iconKey, label }) => {
+                  const Icon = passionIcons[iconKey];
+                  return (
+                    <li key={label}>
+                      <Chip icon={<Icon className="h-5 w-5" />}>{label}</Chip>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

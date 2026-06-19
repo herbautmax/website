@@ -4,12 +4,20 @@ export default function Document() {
   return (
     <Html lang="fr" className="dark">
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Manrope:wght@400;700&family=Sora:wght@400;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600&display=swap"
+          rel="stylesheet"
+        />
         <meta name="theme-color" content="#181b1f" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
       </Head>
-      <body className="bg-[#181b1f] text-gray-100 font-sans">
+      <body className="bg-ink text-fog font-sans">
         <Main />
         <NextScript />
       </body>

@@ -5,6 +5,9 @@ import Head from "next/head";
 import { formatDateFR } from "../../lib/formatDate";
 import TagLabel from "../../components/TagLabel";
 import BlogMiniHeader from "@/components/BlogMiniHeader";
+import { content } from "../../content/site";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 type BlogPageProps = {
   posts: Post[];
@@ -17,38 +20,47 @@ export async function getStaticProps() {
 
 export default function BlogPage({ posts }: BlogPageProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-[#181b1f] text-gray-100 font-sans">
+    <div className="flex min-h-screen flex-col bg-ink font-sans text-fog">
       <Head>
-        <title>Tous les articles | Maxime Herbaut</title>
-        <meta name="description" content="Retrouvez tous les articles du blog de Maxime Herbaut, Product Manager à Lille." />
+        <title>{content.meta.blogList.title}</title>
+        <meta name="description" content={content.meta.blogList.description} />
+        <meta property="og:title" content={content.meta.blogList.title} />
+        <meta property="og:description" content={content.meta.blogList.description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}/blog`} />
+        <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+        <meta property="og:site_name" content={content.brand} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href={`${siteUrl}/blog`} />
       </Head>
       <BlogMiniHeader variant="home" />
-      <main id="main-content" className="max-w-3xl mx-auto flex-grow px-4 pt-20 flex flex-col gap-10" tabIndex={-1}>
-        <header>
-          <h1 className="text-4xl sm:text-5xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#10b981] via-white to-[#6366f1] drop-shadow-xl tracking-tight">
-            Tous les articles
+      <main id="main-content" className="mx-auto flex max-w-3xl flex-grow flex-col gap-10 px-4 pt-20" tabIndex={-1}>
+        <header className="flex flex-col gap-3">
+          <span className="font-label text-sm font-semibold uppercase tracking-[0.16em] text-brand">{content.blog.eyebrow}</span>
+          <h1 className="text-4xl font-bold tracking-tightest text-mist sm:text-5xl">
+            {content.blog.title}
           </h1>
-          <p className="text-gray-200 max-w-2xl">
-            Retrouvez l’ensemble des publications pour approfondir les thématiques produit, design et innovation.
+          <p className="max-w-2xl text-fog">
+            {content.blog.intro}
           </p>
         </header>
-        <ul className="space-y-6 flex-grow mb-20" role="list">
+        <ul className="mb-20 flex-grow space-y-6" role="list">
           {posts.map(post => (
             <li
               key={post.slug}
-              className="border border-white/10 bg-[#23272a] p-6 rounded-2xl transition hover:border-[#10b981] hover:shadow-2xl"
+              className="rounded-3xl border border-white/10 bg-ink-800 p-6 shadow-card transition hover:border-brand hover:shadow-card-hover"
             >
               <article aria-labelledby={`blog-${post.slug}`}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 focus-visible:ring-offset-[#23272a] rounded-xl"
+                  className="block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-800"
                   aria-labelledby={`blog-${post.slug}`}
                 >
-                  <h2 id={`blog-${post.slug}`} className="text-xl font-semibold text-[#10b981]">
+                  <h2 id={`blog-${post.slug}`} className="text-xl font-bold text-brand">
                     {post.title}
                   </h2>
-                  <p className="text-sm text-gray-300 mt-1">{formatDateFR(post.date)}</p>
-                  <p className="text-gray-200 mt-4">{post.excerpt}</p>
+                  <p className="mt-1 text-sm text-muted">{formatDateFR(post.date)}</p>
+                  <p className="mt-4 text-fog">{post.excerpt}</p>
                   <div className="flex flex-wrap gap-2 mt-3">
                     {post.tags?.map((tag) => (
                       <TagLabel key={tag} tag={tag} />

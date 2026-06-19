@@ -1,64 +1,58 @@
-import { Compass, Sparkle, Hammer, Users } from 'lucide-react';
-import { cardBaseClasses, sectionTitleGradientClasses } from '../sectionStyles';
+import { Compass, PenLine, Code, Users } from 'lucide-react';
+import { cardBaseClasses, eyebrowClasses, sectionTitleClasses } from '../sectionStyles';
+import { content } from '../../content/site';
 
-const services = [
-  {
-    icon: <Compass className="w-10 h-10 text-indigo-400 mb-4" aria-hidden="true" />,
-    title: "Concevoir",
-    description: "Vision et stratégie produit : ateliers, Design Sprint, définition du MVP/V1."
-  },
-  {
-    icon: <Sparkle className="w-10 h-10 text-yellow-400 mb-4" aria-hidden="true" />,
-    title: "Créer",
-    description: "Prototypage rapide : MVP no-code, automatisations, IA générative et POC."
-  },
-  {
-    icon: <Hammer className="w-10 h-10 text-blue-400 mb-4" aria-hidden="true" />,
-    title: "Développer",
-    description: "Discovery & Delivery : roadmap, tests utilisateurs, itération."
-  },
-  {
-    icon: <Users className="w-10 h-10 text-green-400 mb-4" aria-hidden="true" />,
-    title: "Fédérer",
-    description: "Structuration des équipes produit : rituels, priorisation, KPIs, culture data-driven."
-  },
-];
+const servicesContent = content.home.services;
 
+const serviceIcons = {
+  compass: Compass,
+  penLine: PenLine,
+  code: Code,
+  users: Users,
+} as const;
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 w-full bg-[#181b1f] scroll-mt-24" aria-labelledby="services-title">
-      <h2 id="services-title" className={`${sectionTitleGradientClasses} mb-10`}>
-        Services
-      </h2>
-      <ul
-        className="grid gap-8 sm:gap-10 md:grid-cols-2 xl:grid-cols-4 max-w-5xl w-full mx-auto px-6 md:px-8 justify-items-center"
-        role="list"
-      >
-        {services.map((service) => {
-          const slug = service.title
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[^a-z0-9]+/g, '-');
+    <section
+      id="services"
+      className="w-full border-y border-white/[0.06] bg-ink py-24 scroll-mt-24"
+      aria-labelledby="services-title"
+    >
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-12 flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
+          <div className="flex flex-col gap-4">
+            <span className={eyebrowClasses}>{servicesContent.eyebrow}</span>
+            <h2 id="services-title" className={sectionTitleClasses}>
+              {servicesContent.title}
+            </h2>
+          </div>
+          <p className="max-w-sm text-base leading-relaxed text-muted">
+            {servicesContent.intro}
+          </p>
+        </div>
 
-          return (
-            <li key={service.title} className="flex justify-center w-full">
-              <article
-                className={`${cardBaseClasses} w-full max-w-sm p-8 md:p-10 flex flex-col items-center text-center`}
-                aria-labelledby={`service-${slug}`}
-              >
-                {service.icon}
-                <h3 id={`service-${slug}`} className="font-bold text-[#10b981] text-lg mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-gray-200">{service.description}</p>
-              </article>
-            </li>
-          );
-        })}
-      </ul>
+        <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4" role="list">
+          {servicesContent.items.map((service) => {
+            const Icon = serviceIcons[service.iconKey];
+            return (
+              <li key={service.title} className="w-full">
+                <article
+                  className={`${cardBaseClasses} h-full w-full p-8 text-left`}
+                  aria-labelledby={`service-${service.slug}`}
+                >
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10">
+                    <Icon className="h-6 w-6 text-brand" aria-hidden="true" />
+                  </div>
+                  <h3 id={`service-${service.slug}`} className="mb-2.5 text-xl font-bold tracking-tight text-mist">
+                    {service.title}
+                  </h3>
+                  <p className="text-[0.95rem] leading-relaxed text-muted">{service.description}</p>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 }
-
