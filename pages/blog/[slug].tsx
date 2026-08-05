@@ -22,6 +22,22 @@ export async function getStaticPaths() {
   };
 }
 
+// Petit retry avec backoff : l'API Notion (loadPageChunk) échoue parfois de
+// façon transitoire pendant le build, ce qui faisait planter le déploiement
+// entier. On réessaie quelques fois avant d'abandonner.
+async function fetchNotionPage(notionId: string, attempts = 4) {
+  const notion = new (await import("notion-client")).NotionAPI();
+  for (let i = 0; i < attempts; i++) {
+    try {
+      return await notion.getPage(notionId);
+    } catch (error) {
+      if (i === attempts - 1) throw error;
+      await new Promise((r) => setTimeout(r, 500 * (i + 1)));
+    }
+  }
+  throw new Error("unreachable");
+}
+
 export async function getStaticProps(context: GetStaticPropsContext) {
   const params = context.params;
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
@@ -31,8 +47,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   if (!post) return { notFound: true };
 
   const notionId = post.id.replace(/-/g, "");
-  const notion = new (await import("notion-client")).NotionAPI();
-  const recordMap = normalizeRecordMap(await notion.getPage(notionId));
+  const recordMap = normalizeRecordMap(await fetchNotionPage(notionId));
 
   return {
     props: { post, recordMap },
