@@ -1,11 +1,6 @@
 import { useState, useEffect } from "react";
-import { NotionRenderer } from "react-notion-x";
-import "react-notion-x/src/styles.css";
-import { Code } from "react-notion-x/build/third-party/code";
-import { Collection } from "react-notion-x/build/third-party/collection";
-import Link from "next/link";
-import { getBlogPosts, getPostBySlug } from "../../lib/notion";
-import { normalizeRecordMap } from "../../lib/notionRecordMap";
+import { getBlogPosts, getPostBySlug, getPostBlocks, NotionBlock } from "../../lib/notion";
+import NotionBlocks from "../../components/NotionBlocks";
 import { Post } from "../../types";
 import { GetStaticPropsContext } from 'next';
 import { formatDateFR } from "../../lib/formatDate";
@@ -22,22 +17,6 @@ export async function getStaticPaths() {
   };
 }
 
-// Petit retry avec backoff : l'API Notion (loadPageChunk) échoue parfois de
-// façon transitoire pendant le build, ce qui faisait planter le déploiement
-// entier. On réessaie quelques fois avant d'abandonner.
-async function fetchNotionPage(notionId: string, attempts = 4) {
-  const notion = new (await import("notion-client")).NotionAPI();
-  for (let i = 0; i < attempts; i++) {
-    try {
-      return await notion.getPage(notionId);
-    } catch (error) {
-      if (i === attempts - 1) throw error;
-      await new Promise((r) => setTimeout(r, 500 * (i + 1)));
-    }
-  }
-  throw new Error("unreachable");
-}
-
 export async function getStaticProps(context: GetStaticPropsContext) {
   const params = context.params;
   const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
@@ -46,21 +25,20 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const post = await getPostBySlug(slug);
   if (!post) return { notFound: true };
 
-  const notionId = post.id.replace(/-/g, "");
-  const recordMap = normalizeRecordMap(await fetchNotionPage(notionId));
+  const blocks = await getPostBlocks(post.id);
 
   return {
-    props: { post, recordMap },
+    props: { post, blocks },
     revalidate: 86400,
   };
 }
 
 interface BlogPostProps {
   post: Post;
-  recordMap: any;
+  blocks: NotionBlock[];
 }
 
-export default function BlogPost({ post, recordMap }: BlogPostProps) {
+export default function BlogPost({ post, blocks }: BlogPostProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -90,11 +68,7 @@ export default function BlogPost({ post, recordMap }: BlogPostProps) {
           ))}
         </div>
         <div className="notion-content">
-          <NotionRenderer
-            recordMap={recordMap}
-            darkMode
-            components={{ Code, Collection }}
-          />
+          <NotionBlocks blocks={blocks} />
         </div>
       </main>
 

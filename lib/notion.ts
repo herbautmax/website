@@ -88,6 +88,46 @@ export async function getBlogPosts(): Promise<Post[]> {
   }
 }
 
+// Bloc de contenu Notion (structure allégée : on n'a besoin que du type et de
+// sa charge utile, plus les enfants pour les listes imbriquées).
+export type NotionBlock = {
+  id: string;
+  type: string;
+  has_children: boolean;
+  children?: NotionBlock[];
+  [key: string]: unknown;
+};
+
+// Récupère le contenu d'un article via l'API OFFICIELLE Notion (api.notion.com,
+// authentifiée par NOTION_API_KEY). Contrairement à l'API non-officielle
+// (loadPageChunk), elle n'est pas derrière la protection anti-bot Cloudflare
+// qui bloquait les IP de Vercel et faisait échouer les déploiements.
+export async function getPostBlocks(blockId: string): Promise<NotionBlock[]> {
+  const blocks: NotionBlock[] = [];
+  let cursor: string | undefined;
+
+  do {
+    const response = await notion.blocks.children.list({
+      block_id: blockId,
+      start_cursor: cursor,
+      page_size: 100,
+    });
+
+    for (const block of response.results) {
+      if (!("type" in block)) continue;
+      const b = block as unknown as NotionBlock;
+      if (b.has_children) {
+        b.children = await getPostBlocks(b.id);
+      }
+      blocks.push(b);
+    }
+
+    cursor = response.has_more ? response.next_cursor ?? undefined : undefined;
+  } while (cursor);
+
+  return blocks;
+}
+
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
     const response = await notion.databases.query({
