@@ -32,11 +32,22 @@ export function personSchema() {
   };
 }
 
-// Référence légère vers la Personne, pour les champs author/publisher.
+// Référence légère vers la Personne, pour le champ publisher.
 const personRef = {
   "@type": "Person",
   name: content.brand,
   url: `${siteUrl}/`,
+};
+
+// Auteur « riche » : rattache chaque article à une identité professionnelle
+// trouvable (métier + profils externes). C'est le signal E-E-A-T qui aide
+// Google et les LLM à identifier Maxime comme Product Manager freelance.
+const authorPerson = {
+  "@type": "Person",
+  name: content.brand,
+  url: `${siteUrl}/`,
+  jobTitle: "Product Manager freelance",
+  sameAs: [info.linkedinUrl, "https://vinoteo.fr"],
 };
 
 // Site web — permet aux moteurs/agents de relier les pages au domaine.
@@ -64,7 +75,7 @@ export function blogPostingSchema(post: Post) {
     ...(post.cover ? { image: post.cover } : {}),
     ...(post.tags?.length ? { keywords: post.tags.join(", ") } : {}),
     inLanguage: "fr-FR",
-    author: personRef,
+    author: authorPerson,
     publisher: personRef,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     url,
