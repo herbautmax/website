@@ -76,7 +76,7 @@ export const content = {
       bio1:
         "Product Manager depuis 10 ans, j'ai piloté des produits B2B et B2C dans différents secteurs.",
       bio2:
-        "Aujourd'hui en freelance, j'embarque les équipes sur des cycles courts : cadrer juste, prototyper vite, livrer ce qui compte. Et j'intègre l'IA là où elle fait gagner du temps réel.",
+        "Aujourd'hui en freelance, j'embarque les équipes sur des cycles courts : cadrer juste, prototyper vite, livrer ce qui compte. Et j'intègre l'IA là où elle est vraiment utile.",
       stats: [
         { value: "10 ans", label: "en product" },
         { value: "15+", label: "produits lancés" },
