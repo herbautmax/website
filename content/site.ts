@@ -176,7 +176,7 @@ export const content = {
       name: "Maxime Herbaut",
       role: "Product Manager freelance",
       eyebrow: "L'auteur",
-      bio: "Product Manager freelance à Lille, j'aide les équipes à concevoir et lancer des produits digitaux utiles, de la discovery au delivery. J'intègre l'IA là où elle fait gagner du temps réel.",
+      bio: "Product Manager freelance à Lille, j'aide les équipes à concevoir et lancer des produits digitaux utiles, de la discovery au delivery. J'intègre l'IA là où elle est vraiment utile.",
       availability: "Disponible pour de nouvelles missions.",
       cta: "Discutons ensemble",
       cvLabel: "Voir mon CV",
