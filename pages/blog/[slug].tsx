@@ -90,12 +90,14 @@ export default function BlogPost({ post, blocks }: BlogPostProps) {
           <p className="mt-2 leading-relaxed text-fog">{content.blog.author.bio}</p>
           <p className="mt-1 text-fog">{content.blog.author.availability}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
-            <Link
-              href={content.blog.author.ctaHref}
+            <a
+              href={content.contactInfo.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-brand-ink transition hover:bg-brand-hover"
             >
               {content.blog.author.cta}
-            </Link>
+            </a>
             <Link
               href={content.blog.author.cvHref}
               className="text-sm text-fog underline underline-offset-2 hover:text-brand"
