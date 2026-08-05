@@ -7,6 +7,13 @@ export type Experience = {
 
 export const experiencesData: Experience[] = [
   {
+    company: "Vinoteo",
+    role: "Fondateur & product builder",
+    date: "2026 — aujourd’hui",
+    description:
+      "Conception et développement de <a href=\"https://vinoteo.fr\" class=\"text-mist underline decoration-white/30 underline-offset-2 hover:decoration-white/60\">Vinoteo</a>, l’app qui aide à gérer sa cave à vin et à ouvrir la bonne bouteille au bon moment et pour le bon plat. Product building de bout en bout : discovery, design, développement (Astro, IA) et mise en marché. → En production, ouvert à tous.",
+  },
+  {
     company: "Villa Finder",
     role: "Développeur web (stage)",
     date: "juin 2014 — avr. 2015",

@@ -28,7 +28,7 @@ export function personSchema() {
       addressCountry: "FR",
     },
     knowsAbout,
-    sameAs: [info.linkedinUrl],
+    sameAs: [info.linkedinUrl, "https://vinoteo.fr"],
   };
 }
 
