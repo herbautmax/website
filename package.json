@@ -10,7 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "postbuild": "next-sitemap && node -e \"if(process.env.VERCEL){console.log('Skip PDF on Vercel');process.exit(0)}process.exit(1)\" || npm run build:pdf",
     "build:pdf": "start-server-and-test \"next start -p 3000\" http://localhost:3000 \"npm run cv:pdf\"",
     "cv:pdf": "ts-node scripts/generate-cv-pdf.ts",
@@ -39,7 +39,10 @@
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
     "autoprefixer": "^10.4.21",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.25",
     "postcss": "^8.5.10",
     "puppeteer": "^24.24.0",
     "start-server-and-test": "^2.1.2",

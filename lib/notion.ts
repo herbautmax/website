@@ -2,8 +2,7 @@
 import { Client } from "@notionhq/client";
 import {
   PageObjectResponse,
-  QueryDatabaseResponse,
-  PartialPageObjectResponse
+  QueryDatabaseResponse
 } from "@notionhq/client/build/src/api-endpoints";
 import { Post } from "../types";
 

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { content } from '../../content/site';
 
 const linkClasses =
@@ -7,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-white/[0.06] bg-ink-950">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 px-6 py-10 text-center sm:flex-row sm:text-left">
-        <a
+        <Link
           href="/"
           className="group flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
         >
@@ -20,7 +21,7 @@ export default function Footer() {
           <span className="text-sm font-semibold text-mist transition-colors group-hover:text-brand">
             {content.brand}
           </span>
-        </a>
+        </Link>
 
         <span className="text-xs text-muted">
           © {new Date().getFullYear()} {content.brand} · {content.footer.copyrightSuffix}
@@ -35,9 +36,9 @@ export default function Footer() {
           >
             {content.footer.linkedin}
           </a>
-          <a href="/blog" className={linkClasses}>
+          <Link href="/blog" className={linkClasses}>
             {content.footer.blog}
-          </a>
+          </Link>
         </nav>
       </div>
     </footer>
