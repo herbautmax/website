@@ -316,6 +316,9 @@ function PrintCV({ experiences }: { experiences: typeof experiencesData }) {
         {/* ----- Colonne droite : expériences en timeline ----- */}
         <section className="space-y-3">
           <h2 className={sectionTitle}>{cv.sections.experiences}</h2>
+          <p className="-mt-1 mb-3 max-w-[46ch] text-[11px] italic leading-snug text-[#5B6270]">
+            12 ans de produit : discovery, delivery, data et IA.
+          </p>
           <ol className="space-y-3 border-l border-[#E2E5E9] pl-4">
             {experiences.map((exp) => (
               <li key={`${exp.company}-${exp.role}`} className="relative break-inside-avoid">

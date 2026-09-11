@@ -11,7 +11,7 @@ export const experiencesData: Experience[] = [
     role: "Fondateur & product builder",
     date: "2026 — aujourd’hui",
     description:
-      "Conception et développement de <a href=\"https://vinoteo.fr\" class=\"text-mist underline decoration-white/30 underline-offset-2 hover:decoration-white/60\">Vinoteo</a>, l’app qui aide à gérer sa cave à vin et à ouvrir la bonne bouteille au bon moment et pour le bon plat. Product building de bout en bout : discovery, design, développement (Astro, IA) et mise en marché. → En production, ouvert à tous.",
+      "Conception et développement de <a href=\"https://vinoteo.fr\" class=\"font-medium text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand\">Vinoteo</a>, l’app qui aide à gérer sa cave à vin et à ouvrir la bonne bouteille au bon moment et pour le bon plat. Product building de bout en bout : discovery, design, développement (Astro, IA) et mise en marché. → En production, ouvert à tous.",
   },
   {
     company: "Villa Finder",
@@ -52,6 +52,6 @@ export const experiencesData: Experience[] = [
     role: "Product Manager (Data et Syndic)",
     date: "juin 2023 — aujourd’hui",
     description:
-      "Pilotage de la refonte de l’ERP métier et de la stack Data (Snowflake, Power BI). → Indicateurs partagés à 1 250 collaborateurs. → Intégration d’IA générative dans la gestion des factures. → Migration progressive des agences sur le nouvel ERP.",
+      "Pilotage de la refonte de l’ERP métier et de la stack Data (Snowflake, Power BI). → Indicateurs de pilotage partagés à 1 250 collaborateurs. → Intégration d’IA générative dans la gestion des factures, l’ajout de document en GED et les process produit. → Migration progressive des agences sur le nouvel ERP.",
   },
 ];
