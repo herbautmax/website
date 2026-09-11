@@ -59,7 +59,7 @@ The "Émeraude" direction is the applied design system. Keep further visual work
 - **Chips** (`components/ui/Chip.tsx`): `soft` = neutral grey surface (`bg-ink-800`, used for passions); `tint` = émeraude (`bg-brand/15 text-brand`, used for skills / strong badges). **Blog tags** (`components/TagLabel.tsx`) are émeraude pills: `rounded-full bg-brand/15 text-brand`, icon `text-brand`.
 - **Fonts**: Schibsted Grotesk (`font-sans`, body + titles), Space Grotesk (`font-label`, uppercase eyebrows). Blog article bodies (react-notion-x) are forced to Schibsted via `.notion-content .notion` in `styles/globals.css`.
 - **CV print view**: `/cv?print=1` renders a compact **white, single-page A4** layout (2 columns), separate from the dark web view; `pages/_app.tsx` hides the footer and switches to a white background in print mode. After any CV change, regenerate the PDF locally — see CV PDF workflow above.
-- **Outstanding asset to supply**: `public/og-image.png` (1200×630) — OG/Twitter meta in `pages/index.tsx` already reference it via `NEXT_PUBLIC_SITE_URL`.
+- **OG image**: `public/og-image.png` (1200×630) is in place; OG/Twitter meta in `pages/index.tsx` reference it via `NEXT_PUBLIC_SITE_URL`.
 
 ## Conventions
 
